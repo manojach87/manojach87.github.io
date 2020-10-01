@@ -1,0 +1,26 @@
+body{font-family: Arial; font-size: small}
+.whiteColor {color: white; background-color: black}
+.blackBack { background-color: black}
+.coralBack { background-color: coral}
+#textF     { background-color: black; color: white }
+.whiteColor {color: white; background-color: black}
+.redColor {color: red; font-weight: bold;}
+.orangeBack { background-color: orange}
+.ul { text-decoration: underline}
+#idLittlePrince     { width: 350px; background-repeat: repeat-y;}
+u    { color: blue}
+span {color: black}
+/*p    {width: 343px}*/
+#idSidebar          { width: 200px ; height: 600px; background-color: azure    ; display: inline-block; alignment: top; vertical-align: top}
+#idSidebarRight     { width: 200px ; height: 600px; /*background-color: azure    ;*/ display: inline-block; alignment: top; vertical-align: top}
+#idMainContent      { width: 800px; height: 290px; /*background-image: url("https://webpages.uncc.edu/machary2/image/backgroundTile.png") ;*/ display: inline-block; }
+#idMainContent2     { width: 800px; height: 400px; /*background-image: url("https://webpages.uncc.edu/machary2/image/backgroundTile.png") ;*/ display: inline-block; }
+#idFooterContent    { width: 1203px; height: 100px; background-color: #F5F5F5  ; display: inline-block; font-size: small; border-bottom-style: solid; border-color: azure; border-top: black}
+#idAboutMeSummary   { text-align: center}
+#idLinks            { background-color: #293E49; height: 25px ; font-size: medium}
+#idLinks>a          { color: azure; width: 100px; text-decoration: none;}
+.sidebarContent     { width: 200px}
+.centerAlignText    { text-align: center; font-weight: bold; }
+.pLittlePrincess    {width: 343px}
+#idLine             { height: 2px; vertical-align: top}
+#idBackRepeat       { background-image: url("paper.gif"); background-repeat: repeat-y;}

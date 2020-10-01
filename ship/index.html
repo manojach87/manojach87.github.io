@@ -1,0 +1,834 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manoj Acharya</title>
+    <link rel="stylesheet" href="./css/styles.css"/>
+    <link rel="stylesheet" type="text/css" href="css/threediv.css">
+    <link rel="stylesheet" type="text/css" href="css/scatterplot.css">
+    <link rel="stylesheet" type="text/css" href="css/bar.css">
+    <!-- <link rel="stylesheet" href="https://cdn.leafletjs.com/leaflet-0.7/leaflet.css"/> -->
+    <link rel="stylesheet" href="css/leaflet.css"/>
+    <!--     <script src="https://d3js.org/d3.v4.min.js"></script>     -->
+    <script src="scripts/d3.v4.min.js"></script>
+    <!-- <script src="https://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script> -->
+    <script src="scripts/leaflet.js"></script>
+</head>
+<body>
+<div id="idMain">
+    <div id="idLinks">
+        <a href="index.html"> Home | </a>
+        <a href="introduction.html">More About me | </a>
+        <!--a href="littleprince.html">Little Prince</a-->
+        <a href="/assignment2_svg/big5.html">Big 5 |</a>
+        <a href="./FIFA_DesignContest.pdf">Design Contest</a>
+    </div>
+    <div id="idSidebar">
+
+        X-Axis:<br/><select onchange="changeXAxis();" id="xAxisMenu" ></select><br/>
+        Y-Axis:<br/><select onchange="changeYAxis();" id="yAxisMenu"></select><br/>
+        Color By:<br/><select id="colorMenu"></select><br/>
+        Count By:<br/><select onchange="/*redraw(this.value);*/" id="dropdown"></select><br/>
+    </div>
+    <div style="display: inline-block; width: 800px; height: 600px;">
+        <div id="idMainContent"><div id="map" style="width: 800px; height: 290px"></div></div>
+        <div id="idMainContent2">
+            <div id="plot" style="width: 390px; height: 400px; display: inline-block"></div>
+            <div id="bar" style="width: 400px; height: 400px; display: inline-block"></div>
+        </div>
+    </div>
+    <div id="idSidebarRight">
+    </div>
+    <div id="idLine">.</div>
+    <div id="idFooterContent">
+        <!--a href="introduction.html">More About me</a>
+        <a href="littleprince.html">Little Prince</a-->
+    </div>
+</div>
+<script type="text/javascript">
+
+    var metrics=["RecordNum","length","width","dwt","callsign",
+        "grt","nrt","lon","lat","speed","course","heading",
+        "timestamp_voyage","time1","draught","eta","time",
+        "dimA","dimB","dimC","dimD","timestamp_position","imo",
+        "mmsi","callsign"
+    ];
+
+    var colorOptions=["name","source_position","heading",
+        "nav_status", "source_voyage","destination",
+        "country","eta","time","aisshiptype","shiptype",
+        "type"
+    ]
+
+    var map = L.map('map').setView([0, 0], 2);
+    mapLink =
+        '<a href="https://openstreetmap.org">OpenStreetMap</a>';
+    L.tileLayer(
+        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; ' + mapLink + ' Contributors',
+            maxZoom: 18,
+        }).addTo(map);
+
+    /* Initialize the SVG layer */
+    map._initPathRoot()
+
+    var margin = {top: 10, right: 10, bottom: 10, left: 10},
+        width = 400 - margin.left - margin.right,
+        height = 290 - margin.top - margin.bottom;
+
+    var highlightCircle;
+
+    //var xLabel = "population";
+    var xLabel = "width";
+    var yLabel = "length";
+    var colorBy = "country";
+
+    var shipData = [];
+    // setup x
+    var xValue = function(d) { /*console.log("xValue");*/ return +d[xLabel];}, // data -> value
+        //xScale = d3.scale.linear().range([0, width]), // value -> display d3.v3
+        xScale = d3.scaleLinear().range([0, width]), // value -> display d3.v4
+        xMap = function(d) { console.log("xMap");return xScale(xValue(d));};//, // data -> display
+    //xAxis = d3.svg.axis().scale(xScale).orient("bottom");
+
+    // setup y
+    var yValue = function(d) { /*console.log("yValue");*/return +d[yLabel];}, // data -> value
+        //yScale = d3.scale.linear().range([height, 0]), // value -> display d3.v3
+        yScale = d3.scaleLinear().range([height, 0]), // value -> display d3.v4
+        yMap = function(d) { console.log("yMap"); return yScale(yValue(d));};//, // data -> display
+    //yAxis = d3.svg.axis().scale(yScale).orient("left");
+
+    var xAxis = d3.axisBottom(xScale).tickFormat(function(d){console.log("tickFormat"); return d.x;});
+    var yAxis = d3.axisLeft(yScale);
+
+    // setup fill color
+
+    var cValue = function(d) { console.log("cValue"); return d[colorBy];},
+        //color = d3.scale.category10(); //d3.v3
+        color = d3.scaleOrdinal(d3.schemeCategory10); //d3.v4
+    var svg = d3.select("#plot").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    // add the tooltip area to the webpage
+    var tooltip = d3.select("#plot").append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
+
+    function getClassString(str){
+        return str.replace(/[^a-zA-Z0-9]/g,'_');
+    }
+    function changeXAxis(){
+        console.log(arguments.callee.name);
+        var x = document.getElementById("xAxisMenu").value;
+        xLabel = x;
+        xScale.domain([d3.min(shipData, xValue)-10, d3.max(shipData, xValue)+1]);
+        svg.selectAll(".x.axis")
+            .call(xAxis).select(".label").text(xLabel);
+        console.log(x)
+        changePos();
+    };
+    function changeYAxis(){
+        console.log(arguments.callee.name);
+        var y = document.getElementById("yAxisMenu").value;
+        yLabel = y;
+        yScale.domain([d3.min(shipData, yValue)-1, d3.max(shipData, yValue)+1]);
+        svg.selectAll(".y.axis")
+            .call(yAxis).select(".label").text(yLabel);
+        console.log(y)
+        changePos();
+    };
+    function changePos(){
+        console.log(arguments.callee.name);
+        svg.selectAll("circle")
+            .transition()
+            .duration(500)
+            .attr("cx", xMap)
+            .attr("cy", yMap);
+    }
+    function highlightCircle(d){
+        console.log(arguments.callee.name);
+        var class_name = ".circle_"+ getClassString(d);
+        d3.selectAll("circle").transition().duration(200).style("opacity", 0);
+        d3.selectAll(class_name).transition().duration(200).style("opacity", 1);
+    }
+
+    d3.csv("./csv/data_mod.csv", function(collection) {
+
+        var feature = new Object();
+        var dataValues = Object.keys(d3.values(collection)[0]);
+
+        //Load Options
+
+        loadAxisOptions(dataValues, "x"); //Options for xAxis
+        loadAxisOptions(dataValues, "y"); //Options for xAxis
+        loadColorByOptions(dataValues);   //Options for Color Code
+        loadDistinctCountOptions(dataValues);   //Options for Distinct Count Column
+
+        drawMap();
+        redraw1("country");
+        //console.log(collection)
+        function drawMap(){
+            console.log(arguments.callee.name);
+            var svg = d3.select("#map").select("svg"),
+                g = svg.append("g");
+
+            collection.forEach(function(d) {
+                d.LatLng = new L.LatLng(d.lat,d.lon)
+            })
+
+
+            //var feature = g.selectAll("circle")
+            feature = g.selectAll("circle")
+                .data(collection)
+                .enter().append("circle")
+                .style("stroke", "black")
+                .style("opacity", .6)
+                .style("fill", "red")
+                .attr("r", 5)
+                .attr("class", function(d){
+                    //return "circle_" + getClassString(cValue(d))
+                    var className = "circle_" + getClassString(cValue(d));
+                    for (var i = 0; i < colorOptions.length; i++) {
+                        className = className+" circle_"+getClassString(d[colorOptions[i]]);
+                    }
+                    return className;
+                });
+
+            map.on("viewreset", updateMap);
+            updateMap();
+        }
+        function updateMap() {
+            console.log(arguments.callee.name);
+            feature.attr("transform",
+                function(d) {
+                    return "translate("+
+                        map.latLngToLayerPoint(d.LatLng).x +","+
+                        map.latLngToLayerPoint(d.LatLng).y +")";
+                }
+            ).attr("r",(map.getZoom()+2)/2)
+
+        }
+        function loadAxisOptions(pOptions, axis) {
+            console.log(arguments.callee.name);
+            var options = pOptions;
+            var sel = d3.select("#" + axis + "AxisMenu");
+
+            sel.on('change', function() {
+                redraw1(document.getElementById("colorMenu").value);
+                // changeXAxis();
+                // changeYAxis();
+
+            });
+            sel.selectAll("option").remove();
+
+            for (var i = 0; i < options.length; i++) {
+                sel.append("option")
+                    .attr("value", options[i])
+                    .text(options[i])
+            }
+        }
+        function loadColorByOptions(pOptions) {
+            console.log(arguments.callee.name);
+            var options = pOptions;
+            var sel = d3.select("#colorMenu");
+            //sel.selectAll("option").remove();
+
+            var colorOptions=["RecordNum","length","width","dwt","callsign",
+                "grt","nrt","lon","lat","speed","course","heading",
+                "timestamp_voyage","time1","draught","eta","time",
+                "dimA","dimB","dimC","dimD","timestamp_position","imo",
+                "mmsi","callsign"
+            ]
+
+            d3.select('#colorMenu')
+                .on('change', function() {
+                    // var newColorCategory = eval(d3.select(this).property('value'));
+                    // console.log(newColorCategory);
+                    redraw1(document.getElementById("colorMenu").value);
+                });
+
+            //sel.on("change",redraw1(document.getElementById("colorMenu").value));
+            for (var i = 0; i < options.length; i++) {
+                if(!(colorOptions.indexOf(options[i])>=0)) {
+
+                    sel.append("option")
+                        .attr("value", options[i])
+                        .text(options[i])
+                }
+
+            }
+        }
+        function loadDistinctCountOptions(pOptions){
+            console.log(arguments.callee.name);
+            var options = pOptions;
+            sel = d3.select("#dropdown");
+
+            var distinctCountOptions=["RecordNum","name","imo",
+                "mmsi","callsign","length","width","dwt",
+                "grt","nrt","timestamp_position","source_position",
+                "lon","lat","speed","course","heading",
+                "nav_status","timestamp_voyage","time1",
+                "source_voyage","draught","destination",
+                "country","eta","time","aisshiptype","shiptype",
+                "dimA","dimB","dimC","dimD","type"
+            ]
+
+
+
+            sel.on('change', function() {
+                redraw1(document.getElementById("colorMenu").value);
+                // changeXAxis();
+                // changeYAxis();
+
+            });
+            for (var i = 0; i < options.length; i++) {
+                if(distinctCountOptions.indexOf(options[i])>=0) {
+
+                    sel.append("option")
+                        .attr("value", options[i])
+                        .text(options[i])
+                }
+            }
+
+            // var selector = d3.select("#drop")
+            //     .append("select")
+            //     .attr("id", "dropdown")
+            //     .on("change", function(){
+            //         var selection = document.getElementById("dropdown");
+            //         attributeName = selection.value;
+            //     });
+
+        }
+        function redraw1(colorBy){
+            d3.select("#plot").select("svg").remove()
+            // var shipData = collection;
+            var data = collection;
+            console.log("redraw1");
+
+            // setup fill color
+            var cValue = function(d) { return d[colorBy];},
+                //color = d3.scale.category10();//d3.v3
+                color = d3.scaleOrdinal(d3.schemeCategory10); //d3.v4
+
+            // add the graph canvas to the body of the webpage
+            var svg = d3.select("#plot").append("svg")
+            //.attr("width", width + margin.left + margin.right + 25)
+                .attr("width", 450)
+                //.attr("height", height + margin.top + margin.bottom +15)
+                .attr("height", 400)
+                .append("g")
+                .attr("transform", "translate(" + (margin.left +40 )+ "," + (margin.top)+")");
+
+            // add the tooltip area to the webpage
+            var tooltip = d3.select("#plot").append("div")
+                .attr("class", "tooltip")
+                .style("opacity", 0);
+
+            d3.selectAll("#idSidebarRight").selectAll("svg").remove();//.transition().delay(500);
+
+
+            // don't want dots overlapping axis, so add in buffer to data domain
+            xScale.domain([d3.min(data, xValue)-1, d3.max(data, xValue)+1]);
+            yScale.domain([d3.min(data, yValue)-1, d3.max(data, yValue)+1]);
+            // x-axis
+            svg.append("g")
+                .attr("class", "x axis")
+                .attr("id", "xaxis")
+                .attr("transform", "translate(-21," + height + ")")
+                .call(xAxis)
+                .append("text")
+                .attr("id", "xlabel")
+                .attr("class", "label")
+                .attr("x", width/2)
+                .attr("y", 35)
+                .style("text-anchor", "end")
+                .style("font-size", "16px")
+                .text(xLabel);
+
+            //console.log(xLabel);
+            // y-axis
+            svg.append("g")
+                .attr("class", "y axis")
+                .call(yAxis)
+                .append("text")
+                .attr("id", "ylabel")
+                .attr("class", "label")
+                .attr("transform", "rotate(-90)")
+                .attr("y", 5)
+                .attr("x", -height/2)
+                .attr("dy", ".71em")
+                .style("text-anchor", "right")
+                .style("font-size", "16px")
+                .text(yLabel);
+
+            // draw dots
+            svg.selectAll(".dot")
+                .data(data)
+                .enter().append("g").attr("class","dot")
+                .append("circle")
+                .attr("r", 5)
+                .attr("cx", xMap)
+                .attr("cy", yMap)
+                .style("fill", function(d) {
+                    //console.log(d);
+
+                    return color(cValue(d));})
+                .attr("class", function(d){
+                    return "circle_" + getClassString(cValue(d));
+                })
+                .on("mouseover", function(d) {
+                    d3.select(this).style("fill", "red").attr("r", 15);
+                    tooltip.transition()
+                        .duration(200)
+                        .style("opacity", .9);
+
+                    tooltip.html(d[colorBy] + "<br/> (" + xValue(d)
+                        + ", " + yValue(d) + ")")
+                        .style("left", (d3.event.pageX + 5) + "px")
+                        .style("top", (d3.event.pageY - 28) + "px");
+                })
+                .on("mouseout", function(d) {
+                    d3.select(this).style("fill", color(cValue(d))).attr("r", 5);
+                    tooltip.transition()
+                        .duration(200)
+                        .style("opacity", 0);
+                });
+
+            // draw legend
+
+            var svgLegend = d3.selectAll("#idSidebarRight").append("svg")
+            // .attr("width", 200 - margin.left - margin.right)
+            // .attr("height", 600 - margin.top - margin.bottom +15)
+                .attr("width", 200)
+                .attr("height", 600)
+                .append("g")
+                .attr("transform", "translate(" + -200 + "," + 0 + ")");
+
+            var legend = svgLegend.selectAll(".legend")
+                .data(color.domain())
+                .enter().append("g")
+                .attr("class", "legend")
+                .attr("transform", function(d, i) {return "translate(0," + i * 20 + ")"; });
+
+            // draw legend colored rectangles
+            // drawLegend(legend);
+
+            // draw legend colored rectangles
+            legend.append("rect")
+                .attr("x", width - 18)
+                .attr("width", 18)
+                .attr("height", 18)
+                .style("fill", color)
+                .on("mouseover", function(d){
+                    highlightCircle(d);
+                })
+                .on("mouseout",function(d){
+                    d3.selectAll("circle").transition().duration(200).style("opacity", 1);
+                });
+
+            // draw legend text
+            legend.append("text")
+                .attr("x", width - 24)
+                .attr("y", 9)
+                .attr("dy", ".35em")
+                .style("text-anchor", "end")
+                .style("font-size","10px")
+                .text(function(d) { return d;})
+
+            bar(data,colorBy,cValue,color);
+            //loadBars()
+        }
+    })
+</script>
+<!--<script src="scripts/bar.js"></script>-->
+<script>
+    // var highlightBar;
+
+    function bar(data,pColorBy,cValue,color) {
+        //console.log(pColorBy);
+        d3.select("#bar").html("");
+        d3.select("#drop").html("");
+
+        var colorBy=pColorBy;
+        //var colorBy="country";
+        //var sort = false;
+
+        var margin = {top: 20, right: 20, bottom: 60, left: 40},
+            width = 390 - margin.left - margin.right,
+            height = 290 - margin.top - margin.bottom;
+
+        //var x = d3.scale.ordinal() //d3.v3
+        var x = d3.scaleBand() //d3.v4
+        //.rangeRoundBands([0, width], .1); //d3.v3
+            .range([0, width], .1); //d3.v4
+
+        //var y = d3.scale.linear() //d3.v3
+        var y = d3.scaleLinear() //d3.v4
+            .range([height, 0]);
+
+        var xAxis = //d3.svg.axis()
+                //.scale(x)
+                d3.axisBottom(x)//.tickFormat(function(d){ return d.x;})
+            //.orient("bottom");
+        ;
+        var yAxis = d3.axisLeft(y);
+
+        var yAxis = //d3.svg.axis()
+            //.scale(y)
+            d3.axisLeft(y);
+        //.orient("left");
+
+        var svg = d3.select("#bar").append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("width", 400)
+            .attr("height", height + margin.top + margin.bottom)
+            .attr("height", 400)
+            .append("g")
+            //.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+            .attr("transform", "translate(" + 100 + "," + 20 + ")");
+
+
+        var attributeName = "";
+
+
+        var shipData = [];
+        //loadData(data,cValue,color);
+
+        function loadData(data,cValue,color) {
+            d3.select("#bar").html("");
+
+            // shipData = [];
+            // shipData = data;
+
+            // d3.select("svg").remove();
+
+
+            var svg = d3.select("#bar").append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+                .append("g")
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+            var country_map = new Map();
+            var actualCount_country_map = new Map();
+
+            data.forEach(function(d){
+                //var stylesArray = country_map.get(d.country);
+                var stylesArray = country_map.get(d[colorBy]);
+                //console.log(d[colorBy]);
+
+                if (stylesArray == undefined)
+                    stylesArray = new Array();
+                var style;
+                style=d[attributeName];
+                stylesArray.push(style);
+                country_map.set(d[colorBy], stylesArray);
+            })
+            ;
+
+            function onlyUnique(value, index, self) {
+                return self.indexOf(value) === index;
+            }
+            country_map.forEach(function (value, key) {
+                var newValue = value.filter(onlyUnique);
+                actualCount_country_map.set(key, newValue.length);
+            });
+
+            var iterator = actualCount_country_map.keys();
+            //console.log(actualCount_country_map.size);
+            for (var i = 0; i < actualCount_country_map.size; i++) {
+                var key = iterator.next().value;
+                var tmp = new Object();
+                tmp[colorBy]=key;
+                tmp["value"]=+actualCount_country_map.get(key);
+                //console.log(tmp)
+                shipData.push(tmp);
+                console.log(shipData);
+            }
+//   x.domain(shipData.map(function(d) { return d.country; }));
+            x.domain(shipData.sort(function (a, b) {
+                return b.value - a.value;
+            })
+                .map(function (d) {
+                    //return d.country;
+                    return d[colorBy];
+                }));
+
+
+            y.domain([0, d3.max(shipData, function (d) {
+                return d.value;
+            })]);
+
+            svg.append("g")
+                .attr("class", "x axis")
+                .attr("transform", "translate(0," + height + ")")
+                .call(xAxis)
+                .selectAll("text")
+                .style("text-anchor", "end")
+                .attr("dx", "-.8em")
+                .attr("dy", "-.50em")
+                .attr("transform", "rotate(-90)");
+
+            svg.append("g")
+                .attr("class", "y axis")
+                .call(yAxis)
+                .append("text")
+                .attr("transform", "rotate(-90)")
+                .attr("y", 5)
+                .attr("dy", ".71em")
+                .style("text-anchor", "end")
+                .text("Count");
+
+
+
+            var bars = svg.selectAll(".bar")
+                .data(shipData)
+                .enter().append("g");
+
+            bars.append("rect")
+                .attr("class", "bar")
+                .attr("x", function (d) {
+                    //return x(d.country);
+                    return x(d[colorBy]);
+                })
+                .style("fill", function(d) {return color(cValue(d));})
+                .attr("width", x.bandwidth()-2)//rangeBand())
+                .attr("y", function (d) {
+                    return y(d.value);
+                })
+                .attr("height", function (d) {
+                    return height - y(d.value);
+                })
+                .on("mouseover", function (d, i) {
+                    d3.select(this).style("fill", "red");
+                    //highlightCircle(d.country);
+                    highlightCircle(d[colorBy]);
+                    // d3.select("#bar" + i).style("display", null);
+
+                })
+
+                .on("mouseleave", function (d, i) {
+                    d3.select(this)
+                    //.style("fill", "steelblue")
+                        .style("fill", function(d) {return color(cValue(d));})
+
+
+                    //highlightCircle(d.country);
+                    highlightCircle(d[colorBy]);
+                    // d3.select("#bar" + i).style("display", "none");
+                });
+
+
+            bars.append("text")
+                .style("text-anchor", "end")
+                .attr("class", "bar_label")
+                .attr("id", function (d, i) {
+                    return "bar" + i;
+                })
+                //       .attr("dx", "-.1em")
+                .attr("dy", "1em")
+                .attr("x", function (d) {
+                    //return x(d.country) + x.rangeBand() / 2;
+                    return x(d[colorBy]) + x.bandwidth()/2//rangeBand() / 2;
+                })
+                .attr("y", function (d) {
+                    return y(d.value);
+                })
+                //        .attr("transform", "rotate(-90)")
+                .text(function (d) {
+                    return d.value;
+                })
+                .style("display", "visible")
+                .style("text-anchor", "middle");
+        };
+
+
+        //d3.csv("csv/data_mod.csv", function(error, data) {
+        var dataSum = d3.nest()
+        //.key(function(d) { return d.country;})
+            .key(function(d) { return d[colorBy];})
+            .rollup(function(d) {
+                return d3.sum(d, function(g) {return 1; });
+            }).entries(data);
+        //loadData(dataSum,cValue,color);
+        console.log(dataSum)
+        //});
+
+        //d3.csv("csv/data_mod.csv", function (data) {
+
+        var elements = Object.keys(data[0])
+            // .filter(function (d) {
+            //     return ((d != "lat")
+            //         & (d != "lng")
+            //         & (d != "country")
+
+        ;
+
+        var selector = d3.select("#drop")
+            .append("select")
+            .attr("id", "dropdown")
+            .on("change", function(){
+                var selection = document.getElementById("dropdown");
+                attributeName = selection.value;
+                loadData(data,cValue,color);
+            });
+
+
+        selector.selectAll("option")
+            .data(elements)
+            .enter().append("option")
+            .attr("value", function (d) {
+                return d;
+            })
+            .text(function (d) {
+                return d;
+            });
+
+        var country_map = new Map();
+        var actualCount_country_map = new Map();
+
+        // for( var i = 0; i<data.length; i++){
+        //     //console.log(data[i])
+        //     var stylesArray = country_map.get(data[colorBy]);
+        //     if (stylesArray == undefined)
+        //         stylesArray = new Array();
+        //     var style = data[colorBy];
+        //     stylesArray.push(style);
+        //     country_map.set(data[colorBy], stylesArray);
+        // }
+        data.forEach(function (d) {
+            //var stylesArray = country_map.get(d.country);
+            var stylesArray = country_map.get(d[colorBy]);
+            if (stylesArray == undefined)
+                stylesArray = new Array();
+            var style = d.population;
+            stylesArray.push(style);
+            //country_map.set(d.country, stylesArray);
+            country_map.set(d[colorBy], stylesArray);
+        });
+
+        function onlyUnique(value, index, self) {
+            return self.indexOf(value) === index;
+        }
+
+        country_map.forEach(function (value, key) {
+            var newValue = value.filter(onlyUnique);
+            actualCount_country_map.set(key, newValue.length);
+
+        });
+
+        var iterator = actualCount_country_map.keys();
+        //console.log(actualCount_country_map.size);
+        for (var i = 0; i < actualCount_country_map.size; i++) {
+            var key = iterator.next().value;
+
+            var tmp = new Object();
+            tmp[colorBy]=key;
+            tmp["value"]=+actualCount_country_map.get(key);
+            //console.log(tmp)
+            shipData.push(tmp)
+        }
+        x.domain(shipData.map(function(d) { return d[colorBy]; }));
+        y.domain([0, d3.max(shipData, function (d) {
+            return d.value;
+        })]);
+
+        svg.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis)
+            .selectAll("text")
+            .style("text-anchor", "end")
+            .attr("dx", "-.8em")
+            .attr("dy", "-.50em")
+            .attr("transform", "rotate(-90)");
+
+        svg.append("g")
+            .attr("class", "y axis")
+            .call(yAxis)
+            .append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 6)
+            .attr("dy", ".71em")
+            .style("text-anchor", "end")
+            .text("Count");
+
+
+        var bars = svg.selectAll(".bar")
+            .data(shipData)
+            //.data(dataSum)
+            .enter().append("g")
+
+        bars.append("rect")
+            .attr("class", "bar")
+            .attr("x", function (d) {
+                //return x(d.country);
+                return x(d[colorBy]);
+            })
+
+            //.attr("width", x.rangeBand()) //d3.v3
+            .attr("width", x.bandwidth()-2) //d3.v4
+            .attr("y", function (d) {
+                return y(d.value);
+            })
+            .style("fill", function(d) {return color(cValue(d));})
+            .attr("height", function (d) {
+                return height - y(d.value);
+            })
+            .on("mouseover", function (d, i) {
+                d3.selectAll(".bar").style("opacity", 0.2)
+                d3.select(this).style("opacity", 1);
+                highlightCircle(d[colorBy]);
+            })
+
+            .on("mouseleave", function (d, i) {
+
+                d3.selectAll(".bar").style("opacity", 1)
+                d3.select(this)
+                    .style("opacity", 1)
+                    .style("fill", function(d) {return color(cValue(d));})
+            });
+
+
+
+        bars.append("text")
+            .style("text-anchor", "end")
+            .attr("class", "bar_label")
+            .attr("id", function (d, i) {
+                return "bar" + i;
+            })
+            .attr("dy", "1em")
+            .attr("x", function (d) {
+                return x(d[colorBy]) + x.bandwidth() //d3.v4
+                    //rangeBand() //d3.v3
+                    / 2;
+            })
+            .attr("y", function (d) {
+                return y(d.value);
+            })
+            //        .attr("transform", "rotate(-90)")
+            .text(function (d) {
+                return d.value;
+            })
+            .style("display", "visible")
+            .style("text-anchor", "middle");
+//        .style("fill", "black");
+        bars.style("rotation","90deg;")
+        //});
+    };
+
+    //bar(colorBy);
+
+</script>
+<style>
+    a{
+
+    }
+</style>
+</body>
+</html>
+

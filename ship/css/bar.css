@@ -1,0 +1,28 @@
+
+.bar {
+    fill: steelblue;
+}
+
+.axis {
+    font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+.x.axis path {
+    display: none;
+}
+
+.bar_label {
+    fill: white;
+    font: 12px sans-serif;
+}
+.bar text {
+    fill: white;
+    font: 12px sans-serif;
+}
