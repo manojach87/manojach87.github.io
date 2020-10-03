@@ -1,0 +1,12 @@
+name: SubscriberActivity
+title: SubscriberActivity
+username:
+account: manojach87
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2930370
+bundleId: 3694246
+url: https://manojach87.shinyapps.io/SubscriberActivity/
+when: 1601619151.22019
+asMultiple: FALSE
+asStatic: FALSE

@@ -1,0 +1,10 @@
+---
+title: "About"
+output: html_document
+---
+
+### Subscriber Activity Forecasting Using TBATS
+
+This Shiny App is for making predictions of the subscriber activity based on historical data. 
+
+Use the Drop Down menu to select the inputs for the model to run.
