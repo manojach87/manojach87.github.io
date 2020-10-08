@@ -3,8 +3,13 @@ title: "About"
 output: html_document
 ---
 
-### Subscriber Activity Forecasting Using TBATS
+This Shiny App allows you to analyze subscriber activity based on historical data. 
 
-This Shiny App is for making predictions of the subscriber activity based on historical data. 
+The data for this analysis is collected from three cable companies. Cable companies provide three types of services:
+##### - Internet
+##### - Video
+##### - Voice
 
-Use the Drop Down menu to select the inputs for the model to run.
+Subscribers connect and disconnect services the above service all the time. This model creates a forecast of what kind of subscriber activity to expect. All data but the last 30 days is used to predict trends for those 30 days. The predictions are then compared to the actuals.
+
+##### To see the predictions, use the drop Down menu to select the inputs for the prediction.

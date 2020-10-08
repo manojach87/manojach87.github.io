@@ -1,0 +1,14 @@
+---
+title: "About"
+output: html_document
+---
+
+The TBATS model was introduced by De Livera, Hyndman & Snyder (2011, JASA). "TBATS" is an acronym which denotes its salient features:
+
+#####  T - trigonometric regressors to model multiple-seasonalities
+#####  B - Box-Cox transformations
+#####  A - ARMA errors
+#####  T - trend
+#####  S - seasonality
+
+This model can be thought of as the BATS model enhanced using the trigonometric regressors 

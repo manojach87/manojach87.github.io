@@ -205,37 +205,59 @@ runModel<-function(MetricDesc, Company, Service, Account_Class){
       
       XXXX$Point.Forecast<-ifelse(
         sapply(XXXX$Point.Forecast, function(x) all(is.na(x))) == TRUE 
-        ,XXXX$Metric
+        ,NA
         ,XXXX$Point.Forecast)
       
       XXXX$Lo.80<-ifelse(
         sapply(XXXX$Lo.80, function(x) all(is.na(x))) == TRUE 
-        ,XXXX$Metric
+        ,NA
         ,XXXX$Lo.80)
       
       XXXX$Hi.80<-ifelse(
         sapply(XXXX$Hi.80, function(x) all(is.na(x))) == TRUE 
-        ,XXXX$Metric
+        ,NA
         ,XXXX$Hi.80)
       
       XXXX$Lo.95<-ifelse(
         sapply(XXXX$Lo.95, function(x) all(is.na(x))) == TRUE 
-        ,XXXX$Metric
+        ,NA
         ,XXXX$Lo.95)
       
       XXXX$Hi.95<-ifelse(
         sapply(XXXX$Hi.95, function(x) all(is.na(x))) == TRUE 
-        ,XXXX$Metric
+        ,NA
         ,XXXX$Hi.95)
       
+      f2 <- list(
+        #family = "Old Standard TT, serif",
+        #size = 14,
+        color = "white"
+      )
       
+      ax <- list(
+        title = "",
+        zeroline = TRUE,
+        showline = TRUE,
+        showticklabels = TRUE,
+        showgrid = FALSE,
+        tickfont = f2
+      )
+      l <- list(
+          font = list(
+          color = "#FFF")
+        )
       
       #print(sp)
       fig <- plot_ly(XXXX
                      , x = ~CalDate
                      , y = ~Point.Forecast
-                     , name = 'Forecast', type = 'scatter', mode = 'lines', showlegend = TRUE,
-                     line = list(color = 'rgb(10,20,190)', width = 2))
+                     , name = 'Forecast', type = 'scatter', mode = 'lines', showlegend = FALSE
+                     , line = list(color = 'rgb(240,240,250)', width = 2)
+  
+                     ) %>%
+        layout(plot_bgcolor  = "rgba(0, 0, 0, 0)",
+               paper_bgcolor = "rgba(0, 0, 0, 0)",
+               fig_bgcolor   = "rgba(0, 0, 0, 0)")
       
       fig <- fig %>% add_trace(data = XXXX, y = ~Lo.80, type = 'scatter', mode = 'lines',
                                fill = 'tonexty', fillcolor='rgba(0,80,100,0.5)', line = list(color = 'transparent'),
@@ -254,9 +276,13 @@ runModel<-function(MetricDesc, Company, Service, Account_Class){
                                showlegend = TRUE, name = 'Hi.95') 
       
       fig <- fig %>% add_trace(data = XXXX, y = ~Metric, type = 'scatter', mode = 'lines',
-                               line = list(color = 'rgb(12, 12, 24)', width = 2),
+                               line = list(color = 'rgb(12, 150, 10)', width = 2),
                                showlegend = TRUE, name = 'Actual') 
-      
+      fig <- fig %>% add_trace(data = XXXX, y = ~Point.Forecast, type = 'scatter', mode = 'lines',
+                               line = list(color = 'rgb(255,255,0)', width = 1),
+                               showlegend = TRUE, name = 'Forecast') 
+      fig <- fig %>% layout(xaxis = ax, yaxis = ax, legend = l)
+      #%>% layout(legend = list(x = 0.1, y = 0.9))
       #fig
 
       #str(sp)
@@ -364,9 +390,10 @@ plot.diagram<-function(MetricDesc, Company, Service, Account_Class){
 # User interface ----
 ui <- fluidPage(
   theme = shinytheme("darkly"),
-  includeMarkdown(file.path("rmd","about.rmd")),
   
-  #titlePanel("Subscriber Activity Report"),
+  titlePanel("Subscriber Activity Forecasting Using TBATS"),
+  includeMarkdown(file.path("rmd","about.rmd")),
+  #includeMarkdown(file.path("rmd","about.rmd")),
   
   sidebarLayout(
     sidebarPanel(
@@ -378,7 +405,8 @@ ui <- fluidPage(
     ),
     mainPanel(plotlyOutput("plot"))
   ),   
-  verbatimTextOutput("value")
+  verbatimTextOutput("value"),
+  includeMarkdown(file.path("rmd","aboutTBATS.rmd"))
 )
 
 server <- function(input, output, session) {
@@ -438,7 +466,6 @@ server <- function(input, output, session) {
     plot.diagram(input$MetricDesc, input$Company, input$Service, input$AccountClass)
   })
 }
-
-
 # Run the app
 shinyApp(ui, server)
+
