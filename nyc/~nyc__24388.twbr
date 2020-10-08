@@ -3,11 +3,14 @@
 <!-- build 20192.19.0917.1648                               -->
 <workbook source-build='2019.2.4 (20192.19.0917.1648)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
   <document-format-change-manifest>
-    <Heatmap />
+    <IntuitiveSorting />
+    <IntuitiveSorting_SP2 />
     <MapboxVectorStylesAndLayers />
     <SheetIdentifierTracking ignorable='true' predowngraded='true' />
     <SortTagCleanup />
     <WindowsPersistSimpleIdentifiers />
+    <WorksheetBackgroundTransparency />
+    <ZoneBackgroundTransparency />
   </document-format-change-manifest>
   <preferences>
     <preference name='ui.encoding.shelf.height' value='24' />
@@ -18,7 +21,7 @@
       <connection class='federated'>
         <named-connections>
           <named-connection caption='2010-2016-school-safety-report' name='textscan.1xvtyvk0n2imla1gdrld71gmwgsk'>
-            <connection class='textscan' directory='C:/Users/P2223479/AppData/Local/Temp/TableauTemp/0bniaax1rybzn115lpz62121l664/Users/manoj/Downloads/Visualization Data/NYC' filename='2010-2016-school-safety-report.csv' password='' server='' />
+            <connection class='textscan' directory='Data' filename='2010-2016-school-safety-report.csv' password='' server='' />
           </named-connection>
         </named-connections>
         <relation connection='textscan.1xvtyvk0n2imla1gdrld71gmwgsk' name='2010-2016-school-safety-report.csv' table='[2010-2016-school-safety-report#csv]' type='table'>
@@ -531,7 +534,7 @@
       </column>
       <column datatype='integer' default-format='*00000' name='[Postcode]' role='dimension' semantic-role='[ZipCode].[Name]' type='ordinal' />
       <column caption='Range A' datatype='string' name='[RangeA]' role='dimension' type='nominal' />
-      <layout dim-ordering='alphabetic' dim-percentage='0.556522' measure-ordering='alphabetic' measure-percentage='0.443478' show-structure='true' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.610372' measure-ordering='alphabetic' measure-percentage='0.389628' show-structure='true' />
       <semantic-values>
         <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
       </semantic-values>
@@ -540,7 +543,7 @@
       <connection class='federated'>
         <named-connections>
           <named-connection caption='2016 School Explorer' name='textscan.0pi7gsr0gnzx0c12u8krn1ifcxqc'>
-            <connection class='textscan' directory='C:/Users/P2223479/Documents/GitHub/manojach87.github.io/nyc/inputs' filename='2016 School Explorer.csv' password='' server='' />
+            <connection class='textscan' directory='Data/inputs' filename='2016 School Explorer.csv' password='' server='' />
           </named-connection>
         </named-connections>
         <relation connection='textscan.0pi7gsr0gnzx0c12u8krn1ifcxqc' name='2016 School Explorer.csv' table='[2016 School Explorer#csv]' type='table'>
@@ -2561,6 +2564,10 @@
       </column>
       <column datatype='string' name='[City]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
       <column aggregation='Sum' datatype='integer' name='[District]' role='dimension' type='ordinal' />
+      <column aggregation='None' caption='Economic Need Index (bin)' datatype='integer' name='[Economic Need Index (bin)]' role='dimension' type='ordinal'>
+        <calculation class='bin' decimals='-2' formula='[Economic Need Index]' peg='0' size='0.05' />
+      </column>
+      <column datatype='real' name='[Economic Need Index]' role='measure' type='quantitative' />
       <column aggregation='Avg' datatype='real' name='[Latitude]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
       <column aggregation='Avg' datatype='real' name='[Longitude]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
       <column caption='Schools' datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
@@ -2570,7 +2577,7 @@
       <column aggregation='CountD' datatype='real' default-format='C1033%' name='[School Income Estimate]' role='measure' type='quantitative' />
       <column datatype='integer' default-format='*00000' name='[Zip]' role='dimension' semantic-role='[ZipCode].[Name]' type='ordinal' />
       <column-instance column='[Calculation_4684095473945264138]' derivation='None' name='[none:Calculation_4684095473945264138:nk]' pivot='key' type='nominal' />
-      <layout dim-ordering='alphabetic' dim-percentage='0.261968' measure-ordering='alphabetic' measure-percentage='0.738032' show-structure='true' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.276596' measure-ordering='alphabetic' measure-percentage='0.723404' show-structure='true' />
       <style>
         <style-rule element='mark'>
           <encoding attr='color' field='[none:Calculation_4684095473945264138:nk]' type='palette'>
@@ -2797,7 +2804,7 @@
       <connection class='federated'>
         <named-connections>
           <named-connection caption='Grades' name='excel-direct.1xjbx161w7y5zd11onei31ifqgan'>
-            <connection class='excel-direct' cleaning='no' compat='no' dataRefreshTime='' filename='C:/Users/P2223479/Documents/GitHub/manojach87.github.io/nyc/inputs/Grades.xlsx' interpretationMode='0' password='' server='' validate='no' />
+            <connection class='excel-direct' cleaning='no' compat='no' dataRefreshTime='' filename='Data/inputs/Grades.xlsx' interpretationMode='0' password='' server='' validate='no' />
           </named-connection>
         </named-connections>
         <relation connection='excel-direct.1xjbx161w7y5zd11onei31ifqgan' name='Sheet 1' table='[&apos;Sheet 1$&apos;]' type='table'>
@@ -2879,7 +2886,7 @@
           <groupfilter function='level-members' level='[none:ETH - Split 2:nk]' />
         </groupfilter>
       </group>
-      <layout dim-ordering='alphabetic' dim-percentage='0.50133' measure-ordering='alphabetic' measure-percentage='0.49867' show-structure='true' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.5' measure-ordering='alphabetic' measure-percentage='0.5' show-structure='true' />
       <style>
         <style-rule element='mark'>
           <encoding attr='color' field='[none:ETH - Split 2:nk]' type='palette'>
@@ -2930,22 +2937,9 @@
         <datasource caption='2016 School Explorer' name='federated.1fxbcu309k6ye91h9tfk40nggdp5' />
       </datasources>
       <datasource-dependencies datasource='federated.1fxbcu309k6ye91h9tfk40nggdp5'>
-        <column caption='Major Ethnicity' datatype='string' name='[Calculation_4684095473945264138]' role='dimension' type='nominal'>
-          <calculation class='tableau' formula='IF     [Percent Asian]    &gt;=.5 then &quot;Asian&quot;&#10;ELSEIF [Percent Black]    &gt;=.5 then &quot;Black&quot;&#10;ELSEIF [Percent Hispanic] &gt;=.5 then &quot;Hispanic&quot;&#10;ELSEIF [Percent ELL]      &gt;=.5 then &quot;ELL&quot;&#10;ELSEIF [Percent White]    &gt;=.5 then &quot;White&quot;&#10;ELSEIF [Percent Black / Hispanic]    &gt;=.5 then &quot;Black / Hispanic&quot;&#10;ELSE &quot;Distributed&quot;&#10;END' />
-        </column>
-        <column datatype='real' name='[Economic Need Index]' role='measure' type='quantitative' />
         <column aggregation='CountD' datatype='real' default-format='C1033%' name='[School Income Estimate]' role='measure' type='quantitative' />
-        <column-instance column='[Calculation_4684095473945264138]' derivation='None' name='[none:Calculation_4684095473945264138:nk]' pivot='key' type='nominal' />
-        <column-instance column='[Economic Need Index]' derivation='None' name='[none:Economic Need Index:qk]' pivot='key' type='quantitative' />
         <column-instance column='[School Income Estimate]' derivation='None' name='[none:School Income Estimate:qk]' pivot='key' type='quantitative' />
       </datasource-dependencies>
-      <filter class='categorical' column='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]'>
-        <groupfilter from='&quot;Asian&quot;' function='range' level='[none:Calculation_4684095473945264138:nk]' to='&quot;White&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
-      </filter>
-      <filter class='quantitative' column='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]' included-values='in-range'>
-        <min>0.0</min>
-        <max>1.0</max>
-      </filter>
       <filter class='quantitative' column='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:School Income Estimate:qk]' included-values='in-range'>
         <min>0.0</min>
       </filter>
@@ -2976,6 +2970,14 @@
         <param name='target' value='Dashboard 4' />
       </command>
     </action>
+    <action caption='Highlight 4 (generated)' name='[Action4]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Cities, School Income and Economic Need Index' type='sheet' />
+      <command command='tsc:brush'>
+        <param name='field-captions' value='Major Ethnicity' />
+        <param name='target' value='Cities, School Income and Economic Need Index' />
+      </command>
+    </action>
   </actions>
   <worksheets>
     <worksheet name='Attendance Rate'>
@@ -2995,35 +2997,21 @@
             <mapsource name='Tableau' />
           </mapsources>
           <datasource-dependencies datasource='federated.1fxbcu309k6ye91h9tfk40nggdp5'>
-            <column caption='Major Ethnicity' datatype='string' name='[Calculation_4684095473945264138]' role='dimension' type='nominal'>
-              <calculation class='tableau' formula='IF     [Percent Asian]    &gt;=.5 then &quot;Asian&quot;&#10;ELSEIF [Percent Black]    &gt;=.5 then &quot;Black&quot;&#10;ELSEIF [Percent Hispanic] &gt;=.5 then &quot;Hispanic&quot;&#10;ELSEIF [Percent ELL]      &gt;=.5 then &quot;ELL&quot;&#10;ELSEIF [Percent White]    &gt;=.5 then &quot;White&quot;&#10;ELSEIF [Percent Black / Hispanic]    &gt;=.5 then &quot;Black / Hispanic&quot;&#10;ELSE &quot;Distributed&quot;&#10;END' />
-            </column>
             <column datatype='string' name='[City]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
-            <column datatype='real' name='[Economic Need Index]' role='measure' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Latitude]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Longitude]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
-            <column datatype='real' name='[Percent Asian]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black / Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent ELL]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent White]' role='measure' type='quantitative' />
             <column aggregation='CountD' datatype='real' default-format='C1033%' name='[School Income Estimate]' role='measure' type='quantitative' />
             <column datatype='string' name='[School Name]' role='dimension' type='nominal' />
             <column datatype='real' name='[Student Attendance Rate]' role='measure' type='quantitative' />
             <column-instance column='[School Name]' derivation='Attribute' name='[attr:School Name:nk]' pivot='key' type='nominal' />
             <column-instance column='[Latitude]' derivation='Avg' name='[avg:Latitude:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Longitude]' derivation='Avg' name='[avg:Longitude:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[Calculation_4684095473945264138]' derivation='None' name='[none:Calculation_4684095473945264138:nk]' pivot='key' type='nominal' />
             <column-instance column='[City]' derivation='None' name='[none:City:nk]' pivot='key' type='nominal' />
-            <column-instance column='[Economic Need Index]' derivation='None' name='[none:Economic Need Index:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='None' name='[none:School Income Estimate:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='Sum' name='[sum:School Income Estimate:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Student Attendance Rate]' derivation='Sum' name='[sum:Student Attendance Rate:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
           <slices>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]</column>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:School Income Estimate:qk]</column>
           </slices>
           <aggregation value='false' />
@@ -3095,35 +3083,21 @@
             <mapsource name='Tableau' />
           </mapsources>
           <datasource-dependencies datasource='federated.1fxbcu309k6ye91h9tfk40nggdp5'>
-            <column caption='Major Ethnicity' datatype='string' name='[Calculation_4684095473945264138]' role='dimension' type='nominal'>
-              <calculation class='tableau' formula='IF     [Percent Asian]    &gt;=.5 then &quot;Asian&quot;&#10;ELSEIF [Percent Black]    &gt;=.5 then &quot;Black&quot;&#10;ELSEIF [Percent Hispanic] &gt;=.5 then &quot;Hispanic&quot;&#10;ELSEIF [Percent ELL]      &gt;=.5 then &quot;ELL&quot;&#10;ELSEIF [Percent White]    &gt;=.5 then &quot;White&quot;&#10;ELSEIF [Percent Black / Hispanic]    &gt;=.5 then &quot;Black / Hispanic&quot;&#10;ELSE &quot;Distributed&quot;&#10;END' />
-            </column>
             <column datatype='string' name='[City]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
-            <column datatype='real' name='[Economic Need Index]' role='measure' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Latitude]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Longitude]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
-            <column datatype='real' name='[Percent Asian]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black / Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent ELL]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent White]' role='measure' type='quantitative' />
             <column aggregation='CountD' datatype='real' default-format='C1033%' name='[School Income Estimate]' role='measure' type='quantitative' />
             <column datatype='string' name='[School Name]' role='dimension' type='nominal' />
             <column datatype='real' name='[Student Attendance Rate]' role='measure' type='quantitative' />
             <column-instance column='[School Name]' derivation='Attribute' name='[attr:School Name:nk]' pivot='key' type='nominal' />
             <column-instance column='[Latitude]' derivation='Avg' name='[avg:Latitude:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Longitude]' derivation='Avg' name='[avg:Longitude:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[Calculation_4684095473945264138]' derivation='None' name='[none:Calculation_4684095473945264138:nk]' pivot='key' type='nominal' />
             <column-instance column='[City]' derivation='None' name='[none:City:nk]' pivot='key' type='nominal' />
-            <column-instance column='[Economic Need Index]' derivation='None' name='[none:Economic Need Index:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='None' name='[none:School Income Estimate:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='Sum' name='[sum:School Income Estimate:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Student Attendance Rate]' derivation='Sum' name='[sum:Student Attendance Rate:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
           <slices>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]</column>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:School Income Estimate:qk]</column>
           </slices>
           <aggregation value='false' />
@@ -3566,35 +3540,21 @@
             <mapsource name='Tableau' />
           </mapsources>
           <datasource-dependencies datasource='federated.1fxbcu309k6ye91h9tfk40nggdp5'>
-            <column caption='Major Ethnicity' datatype='string' name='[Calculation_4684095473945264138]' role='dimension' type='nominal'>
-              <calculation class='tableau' formula='IF     [Percent Asian]    &gt;=.5 then &quot;Asian&quot;&#10;ELSEIF [Percent Black]    &gt;=.5 then &quot;Black&quot;&#10;ELSEIF [Percent Hispanic] &gt;=.5 then &quot;Hispanic&quot;&#10;ELSEIF [Percent ELL]      &gt;=.5 then &quot;ELL&quot;&#10;ELSEIF [Percent White]    &gt;=.5 then &quot;White&quot;&#10;ELSEIF [Percent Black / Hispanic]    &gt;=.5 then &quot;Black / Hispanic&quot;&#10;ELSE &quot;Distributed&quot;&#10;END' />
-            </column>
             <column datatype='string' name='[City]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
-            <column datatype='real' name='[Economic Need Index]' role='measure' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Latitude]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Longitude]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
-            <column datatype='real' name='[Percent Asian]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black / Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent ELL]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent White]' role='measure' type='quantitative' />
             <column datatype='real' name='[Percent of Students Chronically Absent]' role='measure' type='quantitative' />
             <column aggregation='CountD' datatype='real' default-format='C1033%' name='[School Income Estimate]' role='measure' type='quantitative' />
             <column datatype='string' name='[School Name]' role='dimension' type='nominal' />
             <column-instance column='[School Name]' derivation='Attribute' name='[attr:School Name:nk]' pivot='key' type='nominal' />
             <column-instance column='[Latitude]' derivation='Avg' name='[avg:Latitude:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Longitude]' derivation='Avg' name='[avg:Longitude:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[Calculation_4684095473945264138]' derivation='None' name='[none:Calculation_4684095473945264138:nk]' pivot='key' type='nominal' />
             <column-instance column='[City]' derivation='None' name='[none:City:nk]' pivot='key' type='nominal' />
-            <column-instance column='[Economic Need Index]' derivation='None' name='[none:Economic Need Index:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='None' name='[none:School Income Estimate:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Percent of Students Chronically Absent]' derivation='Sum' name='[sum:Percent of Students Chronically Absent:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='Sum' name='[sum:School Income Estimate:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
           <slices>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]</column>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:School Income Estimate:qk]</column>
           </slices>
           <aggregation value='false' />
@@ -3649,35 +3609,145 @@
       </table>
       <simple-id uuid='{0949CF4B-87A2-4532-BEFB-AE6475B5CA7E}' />
     </worksheet>
-    <worksheet name='Cities, School Income and Econmic Need Index'>
+    <worksheet name='Cities, School Income and Economic Need Index '>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontcolor='#f5f5f5'>&lt;Sheet Name&gt;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
       <table>
         <view>
           <datasources>
             <datasource caption='2016 School Explorer' name='federated.1fxbcu309k6ye91h9tfk40nggdp5' />
           </datasources>
           <datasource-dependencies datasource='federated.1fxbcu309k6ye91h9tfk40nggdp5'>
-            <column caption='Major Ethnicity' datatype='string' name='[Calculation_4684095473945264138]' role='dimension' type='nominal'>
-              <calculation class='tableau' formula='IF     [Percent Asian]    &gt;=.5 then &quot;Asian&quot;&#10;ELSEIF [Percent Black]    &gt;=.5 then &quot;Black&quot;&#10;ELSEIF [Percent Hispanic] &gt;=.5 then &quot;Hispanic&quot;&#10;ELSEIF [Percent ELL]      &gt;=.5 then &quot;ELL&quot;&#10;ELSEIF [Percent White]    &gt;=.5 then &quot;White&quot;&#10;ELSEIF [Percent Black / Hispanic]    &gt;=.5 then &quot;Black / Hispanic&quot;&#10;ELSE &quot;Distributed&quot;&#10;END' />
+            <column datatype='string' name='[City]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
+            <column caption='Schools' datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+              <calculation class='tableau' formula='1' />
             </column>
+            <column aggregation='CountD' datatype='real' default-format='C1033%' name='[School Income Estimate]' role='measure' type='quantitative' />
+            <column-instance column='[City]' derivation='None' name='[none:City:nk]' pivot='key' type='nominal' />
+            <column-instance column='[School Income Estimate]' derivation='None' name='[none:School Income Estimate:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Number of Records]' derivation='Sum' name='[sum:Number of Records:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:City:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[sum:Number of Records:qk]' shelf='rows' />
+          </shelf-sorts>
+          <slices>
+            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:School Income Estimate:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='tick-color' field='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[sum:Number of Records:qk]' value='#333333' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='color' value='#333333' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='background-color' value='#555555' />
+            <format attr='band-color' scope='rows' value='#00000000' />
+            <format attr='color' data-class='subtotal' scope='rows' value='#f5f5f5' />
+            <format attr='background-color' data-class='subtotal' scope='rows' value='#333333' />
+            <format attr='background-color' data-class='total' scope='rows' value='#333333' />
+            <format attr='background-color' scope='cols' value='#333333' />
+            <format attr='background-color' data-class='subtotal' scope='cols' value='#333333' />
+            <format attr='background-color' data-class='total' scope='cols' value='#333333' />
+            <format attr='background-color' field='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:City:nk]' value='#333333' />
+            <format attr='color' data-class='subtotal' scope='cols' value='#333333' />
+            <format attr='color' data-class='total' scope='cols' value='#f5f5f5' />
+            <format attr='color' data-class='total' scope='rows' value='#333333' />
+            <format attr='band-color' scope='cols' value='#00000000' />
+            <format attr='border-width' value='0' />
+            <format attr='border-style' data-class='total' value='none' />
+          </style-rule>
+          <style-rule element='field-labels'>
+            <format attr='background-color' value='#333333' />
+          </style-rule>
+          <style-rule element='field-labels-decoration'>
+            <format attr='background-color' value='#333333' />
+          </style-rule>
+          <style-rule element='field-labels-spanner'>
+            <format attr='color' scope='rows' value='#333333' />
+            <format attr='background-color' scope='rows' value='#333333' />
+            <format attr='background-color' scope='cols' value='#333333' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='color' value='#f5f5f5' />
+          </style-rule>
+          <style-rule element='pane'>
+            <format attr='background-color' data-class='subtotal' scope='rows' value='#333333' />
+            <format attr='band-color' scope='rows' value='#00000000' />
+            <format attr='band-color' scope='cols' value='#00000000' />
+            <format attr='border-width' data-class='total' value='0' />
+            <format attr='border-style' data-class='total' value='none' />
+          </style-rule>
+          <style-rule element='table'>
+            <format attr='background-color' value='#333333' />
+            <format attr='band-size' scope='rows' value='1' />
+            <format attr='band-size' scope='cols' value='0' />
+            <format attr='omit-on-special' field='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[sum:Number of Records:qk]' value='true' />
+            <format attr='break-on-special' field='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[sum:Number of Records:qk]' value='true' />
+            <format attr='show-null-value-warning' field='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[sum:Number of Records:qk]' value='true' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='color' value='#333333' />
+          </style-rule>
+          <style-rule element='caption'>
+            <format attr='background-color' value='#333333' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='stroke-size' scope='cols' value='0' />
+            <format attr='line-visibility' scope='cols' value='off' />
+          </style-rule>
+          <style-rule element='table-div'>
+            <format attr='stroke-size' scope='cols' value='0' />
+            <format attr='div-level' scope='cols' value='0' />
+          </style-rule>
+          <style-rule element='title'>
+            <format attr='color' value='#333333' />
+            <format attr='background-color' value='#333333' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:City:nk]</rows>
+        <cols>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[sum:Number of Records:qk]</cols>
+      </table>
+      <simple-id uuid='{8C0C6850-F501-48D2-969E-2CC395F8F350}' />
+    </worksheet>
+    <worksheet name='Cities, School Income and Economic Need Index - Bubble'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontcolor='#f5f5f5'>&lt;Sheet Name&gt;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='2016 School Explorer' name='federated.1fxbcu309k6ye91h9tfk40nggdp5' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1fxbcu309k6ye91h9tfk40nggdp5'>
             <column datatype='string' name='[City]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
             <column datatype='real' name='[Economic Need Index]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Asian]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black / Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent ELL]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent White]' role='measure' type='quantitative' />
             <column aggregation='CountD' datatype='real' default-format='C1033%' name='[School Income Estimate]' role='measure' type='quantitative' />
             <column-instance column='[Economic Need Index]' derivation='Avg' name='[avg:Economic Need Index:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[Calculation_4684095473945264138]' derivation='None' name='[none:Calculation_4684095473945264138:nk]' pivot='key' type='nominal' />
             <column-instance column='[City]' derivation='None' name='[none:City:nk]' pivot='key' type='nominal' />
-            <column-instance column='[Economic Need Index]' derivation='None' name='[none:Economic Need Index:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='None' name='[none:School Income Estimate:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='Sum' name='[sum:School Income Estimate:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
           <slices>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]</column>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:School Income Estimate:qk]</column>
           </slices>
           <aggregation value='true' />
@@ -3685,6 +3755,18 @@
         <style>
           <style-rule element='mark'>
             <encoding attr='color' field='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[avg:Economic Need Index:qk]' palette='red_green_white_diverging_10_0' reverse='true' type='interpolated' />
+          </style-rule>
+          <style-rule element='table'>
+            <format attr='background-color' value='#333333' />
+          </style-rule>
+          <style-rule element='caption'>
+            <format attr='background-color' value='#333333' />
+          </style-rule>
+          <style-rule element='title'>
+            <format attr='background-color' value='#333333' />
+          </style-rule>
+          <style-rule element='legend'>
+            <format attr='background-color' value='#333333' />
           </style-rule>
         </style>
         <panes>
@@ -3738,35 +3820,21 @@
             <mapsource name='Tableau' />
           </mapsources>
           <datasource-dependencies datasource='federated.1fxbcu309k6ye91h9tfk40nggdp5'>
-            <column caption='Major Ethnicity' datatype='string' name='[Calculation_4684095473945264138]' role='dimension' type='nominal'>
-              <calculation class='tableau' formula='IF     [Percent Asian]    &gt;=.5 then &quot;Asian&quot;&#10;ELSEIF [Percent Black]    &gt;=.5 then &quot;Black&quot;&#10;ELSEIF [Percent Hispanic] &gt;=.5 then &quot;Hispanic&quot;&#10;ELSEIF [Percent ELL]      &gt;=.5 then &quot;ELL&quot;&#10;ELSEIF [Percent White]    &gt;=.5 then &quot;White&quot;&#10;ELSEIF [Percent Black / Hispanic]    &gt;=.5 then &quot;Black / Hispanic&quot;&#10;ELSE &quot;Distributed&quot;&#10;END' />
-            </column>
             <column datatype='string' name='[City]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
             <column datatype='real' name='[Collaborative Teachers %]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Economic Need Index]' role='measure' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Latitude]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Longitude]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
-            <column datatype='real' name='[Percent Asian]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black / Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent ELL]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent White]' role='measure' type='quantitative' />
             <column aggregation='CountD' datatype='real' default-format='C1033%' name='[School Income Estimate]' role='measure' type='quantitative' />
             <column datatype='string' name='[School Name]' role='dimension' type='nominal' />
             <column-instance column='[School Name]' derivation='Attribute' name='[attr:School Name:nk]' pivot='key' type='nominal' />
             <column-instance column='[Latitude]' derivation='Avg' name='[avg:Latitude:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Longitude]' derivation='Avg' name='[avg:Longitude:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[Calculation_4684095473945264138]' derivation='None' name='[none:Calculation_4684095473945264138:nk]' pivot='key' type='nominal' />
             <column-instance column='[City]' derivation='None' name='[none:City:nk]' pivot='key' type='nominal' />
-            <column-instance column='[Economic Need Index]' derivation='None' name='[none:Economic Need Index:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='None' name='[none:School Income Estimate:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Collaborative Teachers %]' derivation='Sum' name='[sum:Collaborative Teachers %:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='Sum' name='[sum:School Income Estimate:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
           <slices>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]</column>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:School Income Estimate:qk]</column>
           </slices>
           <aggregation value='false' />
@@ -3839,34 +3907,20 @@
           </mapsources>
           <datasource-dependencies datasource='federated.1fxbcu309k6ye91h9tfk40nggdp5'>
             <column datatype='real' name='[Average ELA Proficiency]' role='measure' type='quantitative' />
-            <column caption='Major Ethnicity' datatype='string' name='[Calculation_4684095473945264138]' role='dimension' type='nominal'>
-              <calculation class='tableau' formula='IF     [Percent Asian]    &gt;=.5 then &quot;Asian&quot;&#10;ELSEIF [Percent Black]    &gt;=.5 then &quot;Black&quot;&#10;ELSEIF [Percent Hispanic] &gt;=.5 then &quot;Hispanic&quot;&#10;ELSEIF [Percent ELL]      &gt;=.5 then &quot;ELL&quot;&#10;ELSEIF [Percent White]    &gt;=.5 then &quot;White&quot;&#10;ELSEIF [Percent Black / Hispanic]    &gt;=.5 then &quot;Black / Hispanic&quot;&#10;ELSE &quot;Distributed&quot;&#10;END' />
-            </column>
             <column datatype='string' name='[City]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
-            <column datatype='real' name='[Economic Need Index]' role='measure' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Latitude]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Longitude]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
-            <column datatype='real' name='[Percent Asian]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black / Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent ELL]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent White]' role='measure' type='quantitative' />
             <column aggregation='CountD' datatype='real' default-format='C1033%' name='[School Income Estimate]' role='measure' type='quantitative' />
             <column datatype='string' name='[School Name]' role='dimension' type='nominal' />
             <column-instance column='[School Name]' derivation='Attribute' name='[attr:School Name:nk]' pivot='key' type='nominal' />
             <column-instance column='[Latitude]' derivation='Avg' name='[avg:Latitude:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Longitude]' derivation='Avg' name='[avg:Longitude:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[Calculation_4684095473945264138]' derivation='None' name='[none:Calculation_4684095473945264138:nk]' pivot='key' type='nominal' />
             <column-instance column='[City]' derivation='None' name='[none:City:nk]' pivot='key' type='nominal' />
-            <column-instance column='[Economic Need Index]' derivation='None' name='[none:Economic Need Index:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='None' name='[none:School Income Estimate:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Average ELA Proficiency]' derivation='Sum' name='[sum:Average ELA Proficiency:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='Sum' name='[sum:School Income Estimate:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
           <slices>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]</column>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:School Income Estimate:qk]</column>
           </slices>
           <aggregation value='false' />
@@ -3928,26 +3982,14 @@
             <datasource caption='2016 School Explorer' name='federated.1fxbcu309k6ye91h9tfk40nggdp5' />
           </datasources>
           <datasource-dependencies datasource='federated.1fxbcu309k6ye91h9tfk40nggdp5'>
-            <column caption='Major Ethnicity' datatype='string' name='[Calculation_4684095473945264138]' role='dimension' type='nominal'>
-              <calculation class='tableau' formula='IF     [Percent Asian]    &gt;=.5 then &quot;Asian&quot;&#10;ELSEIF [Percent Black]    &gt;=.5 then &quot;Black&quot;&#10;ELSEIF [Percent Hispanic] &gt;=.5 then &quot;Hispanic&quot;&#10;ELSEIF [Percent ELL]      &gt;=.5 then &quot;ELL&quot;&#10;ELSEIF [Percent White]    &gt;=.5 then &quot;White&quot;&#10;ELSEIF [Percent Black / Hispanic]    &gt;=.5 then &quot;Black / Hispanic&quot;&#10;ELSE &quot;Distributed&quot;&#10;END' />
-            </column>
             <column datatype='real' name='[Economic Need Index]' role='measure' type='quantitative' />
             <column datatype='real' name='[Percent Asian]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black / Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent ELL]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent White]' role='measure' type='quantitative' />
             <column aggregation='CountD' datatype='real' default-format='C1033%' name='[School Income Estimate]' role='measure' type='quantitative' />
-            <column-instance column='[Calculation_4684095473945264138]' derivation='None' name='[none:Calculation_4684095473945264138:nk]' pivot='key' type='nominal' />
-            <column-instance column='[Economic Need Index]' derivation='None' name='[none:Economic Need Index:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='None' name='[none:School Income Estimate:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Economic Need Index]' derivation='Sum' name='[sum:Economic Need Index:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Percent Asian]' derivation='Sum' name='[sum:Percent Asian:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
           <slices>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]</column>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:School Income Estimate:qk]</column>
           </slices>
           <aggregation value='false' />
@@ -3974,19 +4016,12 @@
             <datasource caption='2016 School Explorer' name='federated.1fxbcu309k6ye91h9tfk40nggdp5' />
           </datasources>
           <datasource-dependencies datasource='federated.1fxbcu309k6ye91h9tfk40nggdp5'>
-            <column caption='Major Ethnicity' datatype='string' name='[Calculation_4684095473945264138]' role='dimension' type='nominal'>
-              <calculation class='tableau' formula='IF     [Percent Asian]    &gt;=.5 then &quot;Asian&quot;&#10;ELSEIF [Percent Black]    &gt;=.5 then &quot;Black&quot;&#10;ELSEIF [Percent Hispanic] &gt;=.5 then &quot;Hispanic&quot;&#10;ELSEIF [Percent ELL]      &gt;=.5 then &quot;ELL&quot;&#10;ELSEIF [Percent White]    &gt;=.5 then &quot;White&quot;&#10;ELSEIF [Percent Black / Hispanic]    &gt;=.5 then &quot;Black / Hispanic&quot;&#10;ELSE &quot;Distributed&quot;&#10;END' />
-            </column>
             <column datatype='real' name='[Economic Need Index]' role='measure' type='quantitative' />
             <column datatype='real' name='[Percent Asian]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black / Hispanic]' role='measure' type='quantitative' />
             <column datatype='real' name='[Percent Black]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent ELL]' role='measure' type='quantitative' />
             <column datatype='real' name='[Percent Hispanic]' role='measure' type='quantitative' />
             <column datatype='real' name='[Percent White]' role='measure' type='quantitative' />
             <column aggregation='CountD' datatype='real' default-format='C1033%' name='[School Income Estimate]' role='measure' type='quantitative' />
-            <column-instance column='[Calculation_4684095473945264138]' derivation='None' name='[none:Calculation_4684095473945264138:nk]' pivot='key' type='nominal' />
-            <column-instance column='[Economic Need Index]' derivation='None' name='[none:Economic Need Index:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='None' name='[none:School Income Estimate:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Economic Need Index]' derivation='Sum' name='[sum:Economic Need Index:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Percent Asian]' derivation='Sum' name='[sum:Percent Asian:qk]' pivot='key' type='quantitative' />
@@ -3996,8 +4031,6 @@
             <column-instance column='[School Income Estimate]' derivation='Sum' name='[sum:School Income Estimate:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
           <slices>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]</column>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:School Income Estimate:qk]</column>
           </slices>
           <aggregation value='false' />
@@ -4108,26 +4141,14 @@
             <datasource caption='2016 School Explorer' name='federated.1fxbcu309k6ye91h9tfk40nggdp5' />
           </datasources>
           <datasource-dependencies datasource='federated.1fxbcu309k6ye91h9tfk40nggdp5'>
-            <column caption='Major Ethnicity' datatype='string' name='[Calculation_4684095473945264138]' role='dimension' type='nominal'>
-              <calculation class='tableau' formula='IF     [Percent Asian]    &gt;=.5 then &quot;Asian&quot;&#10;ELSEIF [Percent Black]    &gt;=.5 then &quot;Black&quot;&#10;ELSEIF [Percent Hispanic] &gt;=.5 then &quot;Hispanic&quot;&#10;ELSEIF [Percent ELL]      &gt;=.5 then &quot;ELL&quot;&#10;ELSEIF [Percent White]    &gt;=.5 then &quot;White&quot;&#10;ELSEIF [Percent Black / Hispanic]    &gt;=.5 then &quot;Black / Hispanic&quot;&#10;ELSE &quot;Distributed&quot;&#10;END' />
-            </column>
             <column datatype='real' name='[Economic Need Index]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Asian]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black / Hispanic]' role='measure' type='quantitative' />
             <column datatype='real' name='[Percent Black]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent ELL]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent White]' role='measure' type='quantitative' />
             <column aggregation='CountD' datatype='real' default-format='C1033%' name='[School Income Estimate]' role='measure' type='quantitative' />
-            <column-instance column='[Calculation_4684095473945264138]' derivation='None' name='[none:Calculation_4684095473945264138:nk]' pivot='key' type='nominal' />
-            <column-instance column='[Economic Need Index]' derivation='None' name='[none:Economic Need Index:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='None' name='[none:School Income Estimate:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Economic Need Index]' derivation='Sum' name='[sum:Economic Need Index:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Percent Black]' derivation='Sum' name='[sum:Percent Black:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
           <slices>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]</column>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:School Income Estimate:qk]</column>
           </slices>
           <aggregation value='false' />
@@ -4154,26 +4175,14 @@
             <datasource caption='2016 School Explorer' name='federated.1fxbcu309k6ye91h9tfk40nggdp5' />
           </datasources>
           <datasource-dependencies datasource='federated.1fxbcu309k6ye91h9tfk40nggdp5'>
-            <column caption='Major Ethnicity' datatype='string' name='[Calculation_4684095473945264138]' role='dimension' type='nominal'>
-              <calculation class='tableau' formula='IF     [Percent Asian]    &gt;=.5 then &quot;Asian&quot;&#10;ELSEIF [Percent Black]    &gt;=.5 then &quot;Black&quot;&#10;ELSEIF [Percent Hispanic] &gt;=.5 then &quot;Hispanic&quot;&#10;ELSEIF [Percent ELL]      &gt;=.5 then &quot;ELL&quot;&#10;ELSEIF [Percent White]    &gt;=.5 then &quot;White&quot;&#10;ELSEIF [Percent Black / Hispanic]    &gt;=.5 then &quot;Black / Hispanic&quot;&#10;ELSE &quot;Distributed&quot;&#10;END' />
-            </column>
             <column datatype='real' name='[Economic Need Index]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Asian]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black / Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent ELL]' role='measure' type='quantitative' />
             <column datatype='real' name='[Percent Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent White]' role='measure' type='quantitative' />
             <column aggregation='CountD' datatype='real' default-format='C1033%' name='[School Income Estimate]' role='measure' type='quantitative' />
-            <column-instance column='[Calculation_4684095473945264138]' derivation='None' name='[none:Calculation_4684095473945264138:nk]' pivot='key' type='nominal' />
-            <column-instance column='[Economic Need Index]' derivation='None' name='[none:Economic Need Index:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='None' name='[none:School Income Estimate:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Economic Need Index]' derivation='Sum' name='[sum:Economic Need Index:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Percent Hispanic]' derivation='Sum' name='[sum:Percent Hispanic:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
           <slices>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]</column>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:School Income Estimate:qk]</column>
           </slices>
           <aggregation value='false' />
@@ -4200,26 +4209,14 @@
             <datasource caption='2016 School Explorer' name='federated.1fxbcu309k6ye91h9tfk40nggdp5' />
           </datasources>
           <datasource-dependencies datasource='federated.1fxbcu309k6ye91h9tfk40nggdp5'>
-            <column caption='Major Ethnicity' datatype='string' name='[Calculation_4684095473945264138]' role='dimension' type='nominal'>
-              <calculation class='tableau' formula='IF     [Percent Asian]    &gt;=.5 then &quot;Asian&quot;&#10;ELSEIF [Percent Black]    &gt;=.5 then &quot;Black&quot;&#10;ELSEIF [Percent Hispanic] &gt;=.5 then &quot;Hispanic&quot;&#10;ELSEIF [Percent ELL]      &gt;=.5 then &quot;ELL&quot;&#10;ELSEIF [Percent White]    &gt;=.5 then &quot;White&quot;&#10;ELSEIF [Percent Black / Hispanic]    &gt;=.5 then &quot;Black / Hispanic&quot;&#10;ELSE &quot;Distributed&quot;&#10;END' />
-            </column>
             <column datatype='real' name='[Economic Need Index]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Asian]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black / Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent ELL]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Hispanic]' role='measure' type='quantitative' />
             <column datatype='real' name='[Percent White]' role='measure' type='quantitative' />
             <column aggregation='CountD' datatype='real' default-format='C1033%' name='[School Income Estimate]' role='measure' type='quantitative' />
-            <column-instance column='[Calculation_4684095473945264138]' derivation='None' name='[none:Calculation_4684095473945264138:nk]' pivot='key' type='nominal' />
-            <column-instance column='[Economic Need Index]' derivation='None' name='[none:Economic Need Index:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='None' name='[none:School Income Estimate:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Economic Need Index]' derivation='Sum' name='[sum:Economic Need Index:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Percent White]' derivation='Sum' name='[sum:Percent White:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
           <slices>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]</column>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:School Income Estimate:qk]</column>
           </slices>
           <aggregation value='false' />
@@ -4256,35 +4253,21 @@
             <mapsource name='Tableau' />
           </mapsources>
           <datasource-dependencies datasource='federated.1fxbcu309k6ye91h9tfk40nggdp5'>
-            <column caption='Major Ethnicity' datatype='string' name='[Calculation_4684095473945264138]' role='dimension' type='nominal'>
-              <calculation class='tableau' formula='IF     [Percent Asian]    &gt;=.5 then &quot;Asian&quot;&#10;ELSEIF [Percent Black]    &gt;=.5 then &quot;Black&quot;&#10;ELSEIF [Percent Hispanic] &gt;=.5 then &quot;Hispanic&quot;&#10;ELSEIF [Percent ELL]      &gt;=.5 then &quot;ELL&quot;&#10;ELSEIF [Percent White]    &gt;=.5 then &quot;White&quot;&#10;ELSEIF [Percent Black / Hispanic]    &gt;=.5 then &quot;Black / Hispanic&quot;&#10;ELSE &quot;Distributed&quot;&#10;END' />
-            </column>
             <column datatype='string' name='[City]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
-            <column datatype='real' name='[Economic Need Index]' role='measure' type='quantitative' />
             <column datatype='real' name='[Effective School Leadership %]' role='measure' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Latitude]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Longitude]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
-            <column datatype='real' name='[Percent Asian]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black / Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent ELL]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent White]' role='measure' type='quantitative' />
             <column aggregation='CountD' datatype='real' default-format='C1033%' name='[School Income Estimate]' role='measure' type='quantitative' />
             <column datatype='string' name='[School Name]' role='dimension' type='nominal' />
             <column-instance column='[School Name]' derivation='Attribute' name='[attr:School Name:nk]' pivot='key' type='nominal' />
             <column-instance column='[Latitude]' derivation='Avg' name='[avg:Latitude:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Longitude]' derivation='Avg' name='[avg:Longitude:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[Calculation_4684095473945264138]' derivation='None' name='[none:Calculation_4684095473945264138:nk]' pivot='key' type='nominal' />
             <column-instance column='[City]' derivation='None' name='[none:City:nk]' pivot='key' type='nominal' />
-            <column-instance column='[Economic Need Index]' derivation='None' name='[none:Economic Need Index:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='None' name='[none:School Income Estimate:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Effective School Leadership %]' derivation='Sum' name='[sum:Effective School Leadership %:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='Sum' name='[sum:School Income Estimate:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
           <slices>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]</column>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:School Income Estimate:qk]</column>
           </slices>
           <aggregation value='false' />
@@ -4357,34 +4340,20 @@
           </mapsources>
           <datasource-dependencies datasource='federated.1fxbcu309k6ye91h9tfk40nggdp5'>
             <column datatype='real' name='[Average Math Proficiency]' role='measure' type='quantitative' />
-            <column caption='Major Ethnicity' datatype='string' name='[Calculation_4684095473945264138]' role='dimension' type='nominal'>
-              <calculation class='tableau' formula='IF     [Percent Asian]    &gt;=.5 then &quot;Asian&quot;&#10;ELSEIF [Percent Black]    &gt;=.5 then &quot;Black&quot;&#10;ELSEIF [Percent Hispanic] &gt;=.5 then &quot;Hispanic&quot;&#10;ELSEIF [Percent ELL]      &gt;=.5 then &quot;ELL&quot;&#10;ELSEIF [Percent White]    &gt;=.5 then &quot;White&quot;&#10;ELSEIF [Percent Black / Hispanic]    &gt;=.5 then &quot;Black / Hispanic&quot;&#10;ELSE &quot;Distributed&quot;&#10;END' />
-            </column>
             <column datatype='string' name='[City]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
-            <column datatype='real' name='[Economic Need Index]' role='measure' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Latitude]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Longitude]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
-            <column datatype='real' name='[Percent Asian]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black / Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent ELL]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent White]' role='measure' type='quantitative' />
             <column aggregation='CountD' datatype='real' default-format='C1033%' name='[School Income Estimate]' role='measure' type='quantitative' />
             <column datatype='string' name='[School Name]' role='dimension' type='nominal' />
             <column-instance column='[School Name]' derivation='Attribute' name='[attr:School Name:nk]' pivot='key' type='nominal' />
             <column-instance column='[Latitude]' derivation='Avg' name='[avg:Latitude:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Longitude]' derivation='Avg' name='[avg:Longitude:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[Calculation_4684095473945264138]' derivation='None' name='[none:Calculation_4684095473945264138:nk]' pivot='key' type='nominal' />
             <column-instance column='[City]' derivation='None' name='[none:City:nk]' pivot='key' type='nominal' />
-            <column-instance column='[Economic Need Index]' derivation='None' name='[none:Economic Need Index:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='None' name='[none:School Income Estimate:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Average Math Proficiency]' derivation='Sum' name='[sum:Average Math Proficiency:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='Sum' name='[sum:School Income Estimate:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
           <slices>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]</column>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:School Income Estimate:qk]</column>
           </slices>
           <aggregation value='false' />
@@ -4456,34 +4425,21 @@
             <mapsource name='Tableau' />
           </mapsources>
           <datasource-dependencies datasource='federated.1fxbcu309k6ye91h9tfk40nggdp5'>
-            <column caption='Major Ethnicity' datatype='string' name='[Calculation_4684095473945264138]' role='dimension' type='nominal'>
-              <calculation class='tableau' formula='IF     [Percent Asian]    &gt;=.5 then &quot;Asian&quot;&#10;ELSEIF [Percent Black]    &gt;=.5 then &quot;Black&quot;&#10;ELSEIF [Percent Hispanic] &gt;=.5 then &quot;Hispanic&quot;&#10;ELSEIF [Percent ELL]      &gt;=.5 then &quot;ELL&quot;&#10;ELSEIF [Percent White]    &gt;=.5 then &quot;White&quot;&#10;ELSEIF [Percent Black / Hispanic]    &gt;=.5 then &quot;Black / Hispanic&quot;&#10;ELSE &quot;Distributed&quot;&#10;END' />
-            </column>
             <column datatype='string' name='[City]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
-            <column datatype='real' name='[Economic Need Index]' role='measure' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Latitude]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Longitude]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
             <column datatype='real' name='[Percent Asian]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black / Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent ELL]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent White]' role='measure' type='quantitative' />
             <column aggregation='CountD' datatype='real' default-format='C1033%' name='[School Income Estimate]' role='measure' type='quantitative' />
             <column datatype='string' name='[School Name]' role='dimension' type='nominal' />
             <column-instance column='[School Name]' derivation='Attribute' name='[attr:School Name:nk]' pivot='key' type='nominal' />
             <column-instance column='[Latitude]' derivation='Avg' name='[avg:Latitude:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Longitude]' derivation='Avg' name='[avg:Longitude:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[Calculation_4684095473945264138]' derivation='None' name='[none:Calculation_4684095473945264138:nk]' pivot='key' type='nominal' />
             <column-instance column='[City]' derivation='None' name='[none:City:nk]' pivot='key' type='nominal' />
-            <column-instance column='[Economic Need Index]' derivation='None' name='[none:Economic Need Index:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='None' name='[none:School Income Estimate:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Percent Asian]' derivation='Sum' name='[sum:Percent Asian:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='Sum' name='[sum:School Income Estimate:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
           <slices>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]</column>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:School Income Estimate:qk]</column>
           </slices>
           <aggregation value='false' />
@@ -4553,34 +4509,21 @@
             <mapsource name='Tableau' />
           </mapsources>
           <datasource-dependencies datasource='federated.1fxbcu309k6ye91h9tfk40nggdp5'>
-            <column caption='Major Ethnicity' datatype='string' name='[Calculation_4684095473945264138]' role='dimension' type='nominal'>
-              <calculation class='tableau' formula='IF     [Percent Asian]    &gt;=.5 then &quot;Asian&quot;&#10;ELSEIF [Percent Black]    &gt;=.5 then &quot;Black&quot;&#10;ELSEIF [Percent Hispanic] &gt;=.5 then &quot;Hispanic&quot;&#10;ELSEIF [Percent ELL]      &gt;=.5 then &quot;ELL&quot;&#10;ELSEIF [Percent White]    &gt;=.5 then &quot;White&quot;&#10;ELSEIF [Percent Black / Hispanic]    &gt;=.5 then &quot;Black / Hispanic&quot;&#10;ELSE &quot;Distributed&quot;&#10;END' />
-            </column>
             <column datatype='string' name='[City]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
-            <column datatype='real' name='[Economic Need Index]' role='measure' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Latitude]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Longitude]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
-            <column datatype='real' name='[Percent Asian]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black / Hispanic]' role='measure' type='quantitative' />
             <column datatype='real' name='[Percent Black]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent ELL]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent White]' role='measure' type='quantitative' />
             <column aggregation='CountD' datatype='real' default-format='C1033%' name='[School Income Estimate]' role='measure' type='quantitative' />
             <column datatype='string' name='[School Name]' role='dimension' type='nominal' />
             <column-instance column='[School Name]' derivation='Attribute' name='[attr:School Name:nk]' pivot='key' type='nominal' />
             <column-instance column='[Latitude]' derivation='Avg' name='[avg:Latitude:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Longitude]' derivation='Avg' name='[avg:Longitude:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[Calculation_4684095473945264138]' derivation='None' name='[none:Calculation_4684095473945264138:nk]' pivot='key' type='nominal' />
             <column-instance column='[City]' derivation='None' name='[none:City:nk]' pivot='key' type='nominal' />
-            <column-instance column='[Economic Need Index]' derivation='None' name='[none:Economic Need Index:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='None' name='[none:School Income Estimate:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Percent Black]' derivation='Sum' name='[sum:Percent Black:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='Sum' name='[sum:School Income Estimate:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
           <slices>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]</column>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:School Income Estimate:qk]</column>
           </slices>
           <aggregation value='false' />
@@ -4653,34 +4596,21 @@
             <mapsource name='Tableau' />
           </mapsources>
           <datasource-dependencies datasource='federated.1fxbcu309k6ye91h9tfk40nggdp5'>
-            <column caption='Major Ethnicity' datatype='string' name='[Calculation_4684095473945264138]' role='dimension' type='nominal'>
-              <calculation class='tableau' formula='IF     [Percent Asian]    &gt;=.5 then &quot;Asian&quot;&#10;ELSEIF [Percent Black]    &gt;=.5 then &quot;Black&quot;&#10;ELSEIF [Percent Hispanic] &gt;=.5 then &quot;Hispanic&quot;&#10;ELSEIF [Percent ELL]      &gt;=.5 then &quot;ELL&quot;&#10;ELSEIF [Percent White]    &gt;=.5 then &quot;White&quot;&#10;ELSEIF [Percent Black / Hispanic]    &gt;=.5 then &quot;Black / Hispanic&quot;&#10;ELSE &quot;Distributed&quot;&#10;END' />
-            </column>
             <column datatype='string' name='[City]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
-            <column datatype='real' name='[Economic Need Index]' role='measure' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Latitude]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Longitude]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
-            <column datatype='real' name='[Percent Asian]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black / Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent ELL]' role='measure' type='quantitative' />
             <column datatype='real' name='[Percent Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent White]' role='measure' type='quantitative' />
             <column aggregation='CountD' datatype='real' default-format='C1033%' name='[School Income Estimate]' role='measure' type='quantitative' />
             <column datatype='string' name='[School Name]' role='dimension' type='nominal' />
             <column-instance column='[School Name]' derivation='Attribute' name='[attr:School Name:nk]' pivot='key' type='nominal' />
             <column-instance column='[Latitude]' derivation='Avg' name='[avg:Latitude:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Longitude]' derivation='Avg' name='[avg:Longitude:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[Calculation_4684095473945264138]' derivation='None' name='[none:Calculation_4684095473945264138:nk]' pivot='key' type='nominal' />
             <column-instance column='[City]' derivation='None' name='[none:City:nk]' pivot='key' type='nominal' />
-            <column-instance column='[Economic Need Index]' derivation='None' name='[none:Economic Need Index:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='None' name='[none:School Income Estimate:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Percent Hispanic]' derivation='Sum' name='[sum:Percent Hispanic:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='Sum' name='[sum:School Income Estimate:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
           <slices>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]</column>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:School Income Estimate:qk]</column>
           </slices>
           <aggregation value='false' />
@@ -4753,34 +4683,21 @@
             <mapsource name='Tableau' />
           </mapsources>
           <datasource-dependencies datasource='federated.1fxbcu309k6ye91h9tfk40nggdp5'>
-            <column caption='Major Ethnicity' datatype='string' name='[Calculation_4684095473945264138]' role='dimension' type='nominal'>
-              <calculation class='tableau' formula='IF     [Percent Asian]    &gt;=.5 then &quot;Asian&quot;&#10;ELSEIF [Percent Black]    &gt;=.5 then &quot;Black&quot;&#10;ELSEIF [Percent Hispanic] &gt;=.5 then &quot;Hispanic&quot;&#10;ELSEIF [Percent ELL]      &gt;=.5 then &quot;ELL&quot;&#10;ELSEIF [Percent White]    &gt;=.5 then &quot;White&quot;&#10;ELSEIF [Percent Black / Hispanic]    &gt;=.5 then &quot;Black / Hispanic&quot;&#10;ELSE &quot;Distributed&quot;&#10;END' />
-            </column>
             <column datatype='string' name='[City]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
             <column datatype='real' name='[Economic Need Index]' role='measure' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Latitude]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Longitude]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
-            <column datatype='real' name='[Percent Asian]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black / Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent ELL]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent White]' role='measure' type='quantitative' />
             <column aggregation='CountD' datatype='real' default-format='C1033%' name='[School Income Estimate]' role='measure' type='quantitative' />
             <column datatype='string' name='[School Name]' role='dimension' type='nominal' />
             <column-instance column='[School Name]' derivation='Attribute' name='[attr:School Name:nk]' pivot='key' type='nominal' />
             <column-instance column='[Latitude]' derivation='Avg' name='[avg:Latitude:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Longitude]' derivation='Avg' name='[avg:Longitude:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[Calculation_4684095473945264138]' derivation='None' name='[none:Calculation_4684095473945264138:nk]' pivot='key' type='nominal' />
             <column-instance column='[City]' derivation='None' name='[none:City:nk]' pivot='key' type='nominal' />
-            <column-instance column='[Economic Need Index]' derivation='None' name='[none:Economic Need Index:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='None' name='[none:School Income Estimate:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Economic Need Index]' derivation='Sum' name='[sum:Economic Need Index:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='Sum' name='[sum:School Income Estimate:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
           <slices>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]</column>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:School Income Estimate:qk]</column>
           </slices>
           <aggregation value='false' />
@@ -4857,33 +4774,21 @@
             <mapsource name='Tableau' />
           </mapsources>
           <datasource-dependencies datasource='federated.1fxbcu309k6ye91h9tfk40nggdp5'>
-            <column caption='Major Ethnicity' datatype='string' name='[Calculation_4684095473945264138]' role='dimension' type='nominal'>
-              <calculation class='tableau' formula='IF     [Percent Asian]    &gt;=.5 then &quot;Asian&quot;&#10;ELSEIF [Percent Black]    &gt;=.5 then &quot;Black&quot;&#10;ELSEIF [Percent Hispanic] &gt;=.5 then &quot;Hispanic&quot;&#10;ELSEIF [Percent ELL]      &gt;=.5 then &quot;ELL&quot;&#10;ELSEIF [Percent White]    &gt;=.5 then &quot;White&quot;&#10;ELSEIF [Percent Black / Hispanic]    &gt;=.5 then &quot;Black / Hispanic&quot;&#10;ELSE &quot;Distributed&quot;&#10;END' />
-            </column>
             <column datatype='string' name='[City]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
             <column datatype='real' name='[Economic Need Index]' role='measure' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Latitude]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Longitude]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
-            <column datatype='real' name='[Percent Asian]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black / Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent ELL]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent White]' role='measure' type='quantitative' />
             <column aggregation='CountD' datatype='real' default-format='C1033%' name='[School Income Estimate]' role='measure' type='quantitative' />
             <column datatype='string' name='[School Name]' role='dimension' type='nominal' />
             <column-instance column='[School Name]' derivation='Attribute' name='[attr:School Name:nk]' pivot='key' type='nominal' />
             <column-instance column='[Latitude]' derivation='Avg' name='[avg:Latitude:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Longitude]' derivation='Avg' name='[avg:Longitude:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[Calculation_4684095473945264138]' derivation='None' name='[none:Calculation_4684095473945264138:nk]' pivot='key' type='nominal' />
             <column-instance column='[City]' derivation='None' name='[none:City:nk]' pivot='key' type='nominal' />
-            <column-instance column='[Economic Need Index]' derivation='None' name='[none:Economic Need Index:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='None' name='[none:School Income Estimate:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Economic Need Index]' derivation='Sum' name='[sum:Economic Need Index:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='Sum' name='[sum:School Income Estimate:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
           <slices>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]</column>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:School Income Estimate:qk]</column>
           </slices>
           <aggregation value='false' />
@@ -4891,6 +4796,17 @@
         <style>
           <style-rule element='header'>
             <format attr='background-color' field='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[sum:School Income Estimate:qk]' value='#000000' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[sum:Economic Need Index:qk]' symmetric='false' type='custom-interpolated'>
+              <color-palette custom='true' name='' type='ordered-diverging'>
+                <color>#137497</color>
+                <color>#67a2b8</color>
+                <color>#d9d9d9</color>
+                <color>#f4bc4e</color>
+                <color>#c26b51</color>
+              </color-palette>
+            </encoding>
           </style-rule>
           <style-rule element='worksheet'>
             <format attr='in-tooltip' field='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[avg:Latitude:qk]' value='false' />
@@ -4906,13 +4822,14 @@
             <view>
               <breakdown value='auto' />
             </view>
-            <mark class='Heatmap' />
+            <mark class='Automatic' />
             <mark-sizing mark-sizing-setting='marks-scaling-off' />
             <encodings>
+              <color column='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[sum:Economic Need Index:qk]' />
+              <size column='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[sum:School Income Estimate:qk]' />
               <tooltip column='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[attr:School Name:nk]' />
               <lod column='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:City:nk]' />
               <lod column='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:City:nk]' />
-              <lod column='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[sum:School Income Estimate:qk]' />
             </encodings>
             <style>
               <style-rule element='mark'>
@@ -4922,7 +4839,6 @@
                 <format attr='has-halo' value='true' />
                 <format attr='halo-color' value='#4e79a7' />
                 <format attr='size' value='1' />
-                <format attr='density-kernel-size' value='2.6408839225769043' />
               </style-rule>
             </style>
           </pane>
@@ -4949,32 +4865,19 @@
             <mapsource name='Tableau' />
           </mapsources>
           <datasource-dependencies datasource='federated.1fxbcu309k6ye91h9tfk40nggdp5'>
-            <column caption='Major Ethnicity' datatype='string' name='[Calculation_4684095473945264138]' role='dimension' type='nominal'>
-              <calculation class='tableau' formula='IF     [Percent Asian]    &gt;=.5 then &quot;Asian&quot;&#10;ELSEIF [Percent Black]    &gt;=.5 then &quot;Black&quot;&#10;ELSEIF [Percent Hispanic] &gt;=.5 then &quot;Hispanic&quot;&#10;ELSEIF [Percent ELL]      &gt;=.5 then &quot;ELL&quot;&#10;ELSEIF [Percent White]    &gt;=.5 then &quot;White&quot;&#10;ELSEIF [Percent Black / Hispanic]    &gt;=.5 then &quot;Black / Hispanic&quot;&#10;ELSE &quot;Distributed&quot;&#10;END' />
-            </column>
-            <column datatype='real' name='[Economic Need Index]' role='measure' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Latitude]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Longitude]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
-            <column datatype='real' name='[Percent Asian]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black / Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent ELL]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Hispanic]' role='measure' type='quantitative' />
             <column datatype='real' name='[Percent White]' role='measure' type='quantitative' />
             <column aggregation='CountD' datatype='real' default-format='C1033%' name='[School Income Estimate]' role='measure' type='quantitative' />
             <column datatype='string' name='[School Name]' role='dimension' type='nominal' />
             <column-instance column='[School Name]' derivation='Attribute' name='[attr:School Name:nk]' pivot='key' type='nominal' />
             <column-instance column='[Latitude]' derivation='Avg' name='[avg:Latitude:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Longitude]' derivation='Avg' name='[avg:Longitude:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[Calculation_4684095473945264138]' derivation='None' name='[none:Calculation_4684095473945264138:nk]' pivot='key' type='nominal' />
-            <column-instance column='[Economic Need Index]' derivation='None' name='[none:Economic Need Index:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='None' name='[none:School Income Estimate:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Percent White]' derivation='Sum' name='[sum:Percent White:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='Sum' name='[sum:School Income Estimate:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
           <slices>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]</column>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:School Income Estimate:qk]</column>
           </slices>
           <aggregation value='false' />
@@ -5041,6 +4944,9 @@
               <calculation class='tableau' formula='IF     [Percent Asian]    &gt;=.5 then &quot;Asian&quot;&#10;ELSEIF [Percent Black]    &gt;=.5 then &quot;Black&quot;&#10;ELSEIF [Percent Hispanic] &gt;=.5 then &quot;Hispanic&quot;&#10;ELSEIF [Percent ELL]      &gt;=.5 then &quot;ELL&quot;&#10;ELSEIF [Percent White]    &gt;=.5 then &quot;White&quot;&#10;ELSEIF [Percent Black / Hispanic]    &gt;=.5 then &quot;Black / Hispanic&quot;&#10;ELSE &quot;Distributed&quot;&#10;END' />
             </column>
             <column datatype='string' name='[City]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
+            <column aggregation='None' caption='Economic Need Index (bin)' datatype='integer' name='[Economic Need Index (bin)]' role='dimension' type='ordinal'>
+              <calculation class='bin' decimals='-2' formula='[Economic Need Index]' peg='0' size='0.05' />
+            </column>
             <column datatype='real' name='[Economic Need Index]' role='measure' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Latitude]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Longitude]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
@@ -5057,6 +4963,7 @@
             <column-instance column='[Longitude]' derivation='Avg' name='[avg:Longitude:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Calculation_4684095473945264138]' derivation='None' name='[none:Calculation_4684095473945264138:nk]' pivot='key' type='nominal' />
             <column-instance column='[City]' derivation='None' name='[none:City:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Economic Need Index (bin)]' derivation='None' name='[none:Economic Need Index (bin):ok]' pivot='key' type='ordinal' />
             <column-instance column='[Economic Need Index]' derivation='None' name='[none:Economic Need Index:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='None' name='[none:School Income Estimate:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Economic Need Index]' derivation='Sum' name='[sum:Economic Need Index:qk]' pivot='key' type='quantitative' />
@@ -5068,61 +4975,145 @@
             <column-instance column='[Percent White]' derivation='Sum' name='[sum:Percent White:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='Sum' name='[sum:School Income Estimate:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
+          <filter class='categorical' column='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index (bin):ok]' filter-group='5'>
+            <groupfilter function='level-members' level='[none:Economic Need Index (bin):ok]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='quantitative' column='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]' filter-group='4' included-values='in-range-or-null'>
+            <min>0.049000000000000002</min>
+            <max>0.95699999999999996</max>
+          </filter>
           <slices>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]</column>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]</column>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:School Income Estimate:qk]</column>
+            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index (bin):ok]</column>
           </slices>
           <aggregation value='false' />
         </view>
         <style>
           <style-rule element='axis'>
-            <encoding attr='space' class='0' field='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[avg:Longitude:qk]' field-type='quantitative' max='-8171017.7159494096' min='-8292445.532592006' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
-            <encoding attr='space' class='0' field='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[avg:Latitude:qk]' field-type='quantitative' max='5019439.0979186706' min='4927017.6271511316' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
+            <encoding attr='space' class='0' field='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[avg:Longitude:qk]' field-type='quantitative' max='-8175768.1561257662' min='-8275294.5180904446' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
+            <encoding attr='space' class='0' field='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[avg:Latitude:qk]' field-type='quantitative' max='5005198.0734553821' min='4935059.0646447791' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
+            <format attr='tick-color' scope='cols' value='#00000000' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='border-width' value='0' />
           </style-rule>
           <style-rule element='header'>
             <format attr='background-color' field='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[sum:School Income Estimate:qk]' value='#000000' />
+            <format attr='background-color' value='#333333' />
+            <format attr='border-width' value='0' />
+            <format attr='border-style' data-class='total' scope='rows' value='none' />
           </style-rule>
           <style-rule element='mark'>
-            <encoding attr='color' field='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[sum:Economic Need Index:qk]' reverse='true' symmetric='false' type='custom-interpolated'>
-              <color-palette custom='true' name='' type='ordered-diverging'>
-                <color>#fd8008</color>
-                <color>#f9891d</color>
-                <color>#f69233</color>
-                <color>#f39b47</color>
-                <color>#efa45c</color>
-                <color>#ecac6f</color>
-                <color>#e9b482</color>
-                <color>#e6bc95</color>
-                <color>#e2c4a6</color>
-                <color>#dfcbb8</color>
-                <color>#dcd2c8</color>
-                <color>#d9d9d9</color>
-                <color>#99d788</color>
-                <color>#88cd7a</color>
-                <color>#7bc26f</color>
-                <color>#6fb663</color>
-                <color>#64ab59</color>
-                <color>#57a153</color>
-                <color>#499550</color>
-                <color>#3b8a4a</color>
-                <color>#2d7f42</color>
-                <color>#27753d</color>
-                <color>#24693d</color>
-              </color-palette>
-            </encoding>
+            <encoding attr='color' center='0.5' field='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[sum:Economic Need Index:qk]' max='1.0' min='0.0' palette='red_green_gold_diverging_10_0' reverse='true' symmetric='false' type='interpolated' />
             <encoding attr='color' field='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[sum:Percent Black:qk]' palette='red_blue_white_diverging_10_0' reverse='true' symmetric='false' type='interpolated' />
             <encoding attr='color' field='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[sum:Percent Hispanic:qk]' palette='red_blue_white_diverging_10_0' reverse='true' type='interpolated' />
             <encoding attr='color' field='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[sum:Percent Asian:qk]' palette='red_blue_diverging_10_0' reverse='true' type='interpolated' />
             <encoding attr='color' field='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[sum:Percent White:qk]' palette='red_blue_diverging_10_0' reverse='true' type='interpolated' />
             <encoding attr='size' field='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[sum:School Income Estimate:qk]' field-type='quantitative' max-size='1' min-size='0' type='quantsize' />
           </style-rule>
+          <style-rule element='pane'>
+            <format attr='border-width' value='0' />
+            <format attr='border-style' data-class='total' scope='rows' value='none' />
+          </style-rule>
+          <style-rule element='table'>
+            <format attr='background-color' value='#00000000' />
+          </style-rule>
           <style-rule element='worksheet'>
             <format attr='in-tooltip' field='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[avg:Latitude:qk]' value='false' />
             <format attr='in-tooltip' field='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[avg:Longitude:qk]' value='false' />
           </style-rule>
+          <style-rule element='dropline'>
+            <format attr='stroke-size' scope='rows' value='0' />
+            <format attr='line-visibility' scope='rows' value='off' />
+            <format attr='stroke-size' scope='cols' value='0' />
+            <format attr='line-visibility' scope='cols' value='off' />
+          </style-rule>
+          <style-rule element='refline'>
+            <format attr='stroke-size' scope='rows' value='0' />
+            <format attr='line-visibility' scope='rows' value='off' />
+            <format attr='stroke-size' scope='cols' value='0' />
+            <format attr='line-visibility' scope='cols' value='off' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='stroke-size' scope='rows' value='0' />
+          </style-rule>
+          <style-rule element='zeroline'>
+            <format attr='stroke-size' scope='rows' value='0' />
+          </style-rule>
+          <style-rule element='map-layer'>
+            <format attr='enabled' id='b01002_001e' value='false' />
+            <format attr='enabled' id='b01002_002e' value='false' />
+            <format attr='enabled' id='b01002_003e' value='false' />
+            <format attr='enabled' id='dp02_0001e' value='false' />
+            <format attr='enabled' id='dp02_0015e' value='false' />
+            <format attr='enabled' id='dp03_0027e_plus_dp03_0029e' value='false' />
+            <format attr='enabled' id='dp03_0028e' value='false' />
+            <format attr='enabled' id='dp03_0030e_plus_dp03_0031e' value='false' />
+            <format attr='enabled' id='dp03_0062e' value='false' />
+            <format attr='enabled' id='dp03_0088e' value='false' />
+            <format attr='enabled' id='dp04_0001e' value='false' />
+            <format attr='enabled' id='dp04_0046e' value='false' />
+            <format attr='enabled' id='dp04_0047e' value='false' />
+            <format attr='enabled' id='dp04_0089e' value='false' />
+            <format attr='enabled' id='dp05_0001e' value='false' />
+            <format attr='enabled' id='dp05_0002e_div_dp05_0003e' value='false' />
+            <format attr='enabled' id='dp05_0032e' value='false' />
+            <format attr='enabled' id='dp05_0033e' value='false' />
+            <format attr='enabled' id='dp05_0034e' value='false' />
+            <format attr='enabled' id='dp05_0039e' value='false' />
+            <format attr='enabled' id='dp05_0047e' value='false' />
+            <format attr='enabled' id='dp05_0053e' value='false' />
+            <format attr='enabled' id='dp05_0066e' value='false' />
+            <format attr='enabled' id='dp05_0077e' value='false' />
+            <format attr='enabled' id='parks' value='false' />
+            <format attr='enabled' id='landcover_wood' value='false' />
+            <format attr='enabled' id='landcover_scrub' value='false' />
+            <format attr='enabled' id='landcover_grass' value='false' />
+            <format attr='enabled' id='landcover_crop' value='false' />
+            <format attr='enabled' id='admin-0-boundaries-bg' value='false' />
+            <format attr='enabled' id='admin-0-boundaries' value='false' />
+            <format attr='enabled' id='admin-0-boundaries-dispute' value='false' />
+            <format attr='enabled' id='admin-0-label-5th-tier' value='false' />
+            <format attr='enabled' id='admin-0-label-4th-tier' value='false' />
+            <format attr='enabled' id='admin-0-label-3rd-tier' value='false' />
+            <format attr='enabled' id='admin-0-label-2nd-tier' value='false' />
+            <format attr='enabled' id='admin-0-label-1st-tier' value='false' />
+            <format attr='enabled' id='admin-0-boundaries-bg-sub' value='false' />
+            <format attr='enabled' id='admin-1-boundaries-sm-parents-bg' value='false' />
+            <format attr='enabled' id='admin-1-boundaries-md-parents-bg' value='false' />
+            <format attr='enabled' id='admin-1-boundaries-lg-parents-bg' value='false' />
+            <format attr='enabled' id='admin-0-boundaries-dispute-sub' value='false' />
+            <format attr='enabled' id='admin-0-boundaries-sub' value='false' />
+            <format attr='enabled' id='admin-1-boundaries-supress' value='false' />
+            <format attr='enabled' id='admin-1-boundaries-sm-parents' value='false' />
+            <format attr='enabled' id='admin-1-boundaries-md-parents' value='false' />
+            <format attr='enabled' id='admin-1-boundaries-lg-parents' value='false' />
+            <format attr='enabled' id='admin1-water-lines-usa-tableau' value='false' />
+            <format attr='enabled' id='9-dash-line-casing' value='false' />
+            <format attr='enabled' id='9-dash-line' value='false' />
+            <format attr='enabled' id='admin-1-label-9th-tier' value='false' />
+            <format attr='enabled' id='admin-1-label-8th-tier' value='false' />
+            <format attr='enabled' id='admin-1-label-7th-tier' value='false' />
+            <format attr='enabled' id='admin-1-label-6th-tier' value='false' />
+            <format attr='enabled' id='admin-1-label-5th-tier' value='false' />
+            <format attr='enabled' id='admin-1-label-4th-tier' value='false' />
+            <format attr='enabled' id='admin-1-label-3rd-tier' value='false' />
+            <format attr='enabled' id='admin-1-label-2nd-tier' value='false' />
+            <format attr='enabled' id='admin-1-label-1st-tier' value='false' />
+            <format attr='enabled' id='us-admin-1-label-abbr-3rd-tier' value='false' />
+            <format attr='enabled' id='us-admin-1-label-abbr-2nd-tier' value='false' />
+            <format attr='enabled' id='us-admin-1-label-abbr-1st-tier' value='false' />
+            <format attr='enabled' id='admin-2-boundaries-bg' value='true' />
+            <format attr='enabled' id='admin-2-boundaries' value='true' />
+          </style-rule>
           <style-rule element='map'>
-            <format attr='washout' value='0.0' />
+            <format attr='washout' value='0' />
+            <format attr='map-style' value='dark' />
+            <format attr='wrap' value='false' />
+          </style-rule>
+          <style-rule element='map-data-layer'>
+            <format attr='palette' value='tableau-map-blue-green-light' />
           </style-rule>
         </style>
         <panes>
@@ -5148,12 +5139,16 @@
             </encodings>
             <style>
               <style-rule element='mark'>
+                <format attr='size' value='0.80160218477249146' />
                 <format attr='mark-transparency' value='226' />
                 <format attr='has-stroke' value='true' />
                 <format attr='stroke-color' value='#4e79a7' />
                 <format attr='has-halo' value='true' />
                 <format attr='halo-color' value='#4e79a7' />
-                <format attr='size' value='2.4408109188079834' />
+              </style-rule>
+              <style-rule element='trendline'>
+                <format attr='stroke-size' value='0' />
+                <format attr='line-visibility' value='off' />
               </style-rule>
             </style>
           </pane>
@@ -5163,20 +5158,33 @@
       </table>
       <simple-id uuid='{90BB8D5B-6FE5-4479-AE51-9169872F47E0}' />
     </worksheet>
-    <worksheet name='Sheet 11'>
+    <worksheet name='Schools by Major Ethnic Population - Bar'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontsize='10'>Schools by Major Ethnic Population</run>
+          </formatted-text>
+        </title>
+      </layout-options>
       <table>
         <view>
           <datasources>
             <datasource caption='2016 School Explorer' name='federated.1fxbcu309k6ye91h9tfk40nggdp5' />
           </datasources>
+          <mapsources>
+            <mapsource name='Tableau' />
+          </mapsources>
           <datasource-dependencies datasource='federated.1fxbcu309k6ye91h9tfk40nggdp5'>
             <column caption='Major Ethnicity' datatype='string' name='[Calculation_4684095473945264138]' role='dimension' type='nominal'>
               <calculation class='tableau' formula='IF     [Percent Asian]    &gt;=.5 then &quot;Asian&quot;&#10;ELSEIF [Percent Black]    &gt;=.5 then &quot;Black&quot;&#10;ELSEIF [Percent Hispanic] &gt;=.5 then &quot;Hispanic&quot;&#10;ELSEIF [Percent ELL]      &gt;=.5 then &quot;ELL&quot;&#10;ELSEIF [Percent White]    &gt;=.5 then &quot;White&quot;&#10;ELSEIF [Percent Black / Hispanic]    &gt;=.5 then &quot;Black / Hispanic&quot;&#10;ELSE &quot;Distributed&quot;&#10;END' />
             </column>
+            <column aggregation='None' caption='Economic Need Index (bin)' datatype='integer' name='[Economic Need Index (bin)]' role='dimension' type='ordinal'>
+              <calculation class='bin' decimals='-2' formula='[Economic Need Index]' peg='0' size='0.05' />
+            </column>
             <column datatype='real' name='[Economic Need Index]' role='measure' type='quantitative' />
-            <column datatype='integer' name='[Grade 3 ELA 4s - All Students]' role='measure' type='quantitative' />
-            <column datatype='integer' name='[Grade 3 Math 4s - All Students]' role='measure' type='quantitative' />
-            <column datatype='string' name='[Grade Low]' role='dimension' type='nominal' />
+            <column caption='Schools' datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+              <calculation class='tableau' formula='1' />
+            </column>
             <column datatype='real' name='[Percent Asian]' role='measure' type='quantitative' />
             <column datatype='real' name='[Percent Black / Hispanic]' role='measure' type='quantitative' />
             <column datatype='real' name='[Percent Black]' role='measure' type='quantitative' />
@@ -5185,7 +5193,60 @@
             <column datatype='real' name='[Percent White]' role='measure' type='quantitative' />
             <column aggregation='CountD' datatype='real' default-format='C1033%' name='[School Income Estimate]' role='measure' type='quantitative' />
             <column-instance column='[Calculation_4684095473945264138]' derivation='None' name='[none:Calculation_4684095473945264138:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Economic Need Index (bin)]' derivation='None' name='[none:Economic Need Index (bin):ok]' pivot='key' type='ordinal' />
             <column-instance column='[Economic Need Index]' derivation='None' name='[none:Economic Need Index:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[School Income Estimate]' derivation='None' name='[none:School Income Estimate:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Number of Records]' derivation='Sum' name='[sum:Number of Records:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index (bin):ok]' filter-group='5'>
+            <groupfilter function='level-members' level='[none:Economic Need Index (bin):ok]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='quantitative' column='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]' filter-group='4' included-values='in-range-or-null'>
+            <min>0.049000000000000002</min>
+            <max>0.95699999999999996</max>
+          </filter>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[sum:Number of Records:qk]' shelf='columns' />
+          </shelf-sorts>
+          <slices>
+            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:School Income Estimate:qk]</column>
+            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]</column>
+            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index (bin):ok]</column>
+          </slices>
+          <aggregation value='false' />
+        </view>
+        <style>
+          <style-rule element='map'>
+            <format attr='washout' value='0.0' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+          </pane>
+        </panes>
+        <rows>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[sum:Number of Records:qk]</rows>
+        <cols>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]</cols>
+        <show-full-range>
+          <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[Economic Need Index (bin)]</column>
+        </show-full-range>
+      </table>
+      <simple-id uuid='{3D86CA27-BC7B-4059-A4C2-84F6A887C238}' />
+    </worksheet>
+    <worksheet name='Sheet 11'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='2016 School Explorer' name='federated.1fxbcu309k6ye91h9tfk40nggdp5' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1fxbcu309k6ye91h9tfk40nggdp5'>
+            <column datatype='integer' name='[Grade 3 ELA 4s - All Students]' role='measure' type='quantitative' />
+            <column datatype='integer' name='[Grade 3 Math 4s - All Students]' role='measure' type='quantitative' />
+            <column datatype='string' name='[Grade Low]' role='dimension' type='nominal' />
+            <column aggregation='CountD' datatype='real' default-format='C1033%' name='[School Income Estimate]' role='measure' type='quantitative' />
             <column-instance column='[Grade Low]' derivation='None' name='[none:Grade Low:nk]' pivot='key' type='nominal' />
             <column-instance column='[School Income Estimate]' derivation='None' name='[none:School Income Estimate:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Grade 3 ELA 4s - All Students]' derivation='Sum' name='[sum:Grade 3 ELA 4s - All Students:qk]' pivot='key' type='quantitative' />
@@ -5199,8 +5260,6 @@
           </filter>
           <slices>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[:Measure Names]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]</column>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:School Income Estimate:qk]</column>
           </slices>
           <aggregation value='true' />
@@ -5227,56 +5286,6 @@
       </table>
       <simple-id uuid='{3CD82530-FF0E-412E-84FE-78350D8DF6F8}' />
     </worksheet>
-    <worksheet name='Sheet 2'>
-      <table>
-        <view>
-          <datasources>
-            <datasource caption='2016 School Explorer' name='federated.1fxbcu309k6ye91h9tfk40nggdp5' />
-          </datasources>
-          <datasource-dependencies datasource='federated.1fxbcu309k6ye91h9tfk40nggdp5'>
-            <column caption='Major Ethnicity' datatype='string' name='[Calculation_4684095473945264138]' role='dimension' type='nominal'>
-              <calculation class='tableau' formula='IF     [Percent Asian]    &gt;=.5 then &quot;Asian&quot;&#10;ELSEIF [Percent Black]    &gt;=.5 then &quot;Black&quot;&#10;ELSEIF [Percent Hispanic] &gt;=.5 then &quot;Hispanic&quot;&#10;ELSEIF [Percent ELL]      &gt;=.5 then &quot;ELL&quot;&#10;ELSEIF [Percent White]    &gt;=.5 then &quot;White&quot;&#10;ELSEIF [Percent Black / Hispanic]    &gt;=.5 then &quot;Black / Hispanic&quot;&#10;ELSE &quot;Distributed&quot;&#10;END' />
-            </column>
-            <column datatype='string' name='[City]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
-            <column datatype='real' name='[Economic Need Index]' role='measure' type='quantitative' />
-            <column caption='Schools' datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
-              <calculation class='tableau' formula='1' />
-            </column>
-            <column datatype='real' name='[Percent Asian]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black / Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent ELL]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent White]' role='measure' type='quantitative' />
-            <column aggregation='CountD' datatype='real' default-format='C1033%' name='[School Income Estimate]' role='measure' type='quantitative' />
-            <column-instance column='[Calculation_4684095473945264138]' derivation='None' name='[none:Calculation_4684095473945264138:nk]' pivot='key' type='nominal' />
-            <column-instance column='[City]' derivation='None' name='[none:City:nk]' pivot='key' type='nominal' />
-            <column-instance column='[Economic Need Index]' derivation='None' name='[none:Economic Need Index:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[School Income Estimate]' derivation='None' name='[none:School Income Estimate:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[Number of Records]' derivation='Sum' name='[sum:Number of Records:qk]' pivot='key' type='quantitative' />
-          </datasource-dependencies>
-          <computed-sort column='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:City:nk]' direction='ASC' using='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[sum:Number of Records:qk]' />
-          <slices>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:School Income Estimate:qk]</column>
-          </slices>
-          <aggregation value='true' />
-        </view>
-        <style />
-        <panes>
-          <pane selection-relaxation-option='selection-relaxation-allow'>
-            <view>
-              <breakdown value='auto' />
-            </view>
-            <mark class='Automatic' />
-          </pane>
-        </panes>
-        <rows>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:City:nk]</rows>
-        <cols>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[sum:Number of Records:qk]</cols>
-      </table>
-      <simple-id uuid='{8C0C6850-F501-48D2-969E-2CC395F8F350}' />
-    </worksheet>
     <worksheet name='Sheet 23'>
       <table>
         <view>
@@ -5284,10 +5293,6 @@
             <datasource caption='2016 School Explorer' name='federated.1fxbcu309k6ye91h9tfk40nggdp5' />
           </datasources>
           <datasource-dependencies datasource='federated.1fxbcu309k6ye91h9tfk40nggdp5'>
-            <column caption='Major Ethnicity' datatype='string' name='[Calculation_4684095473945264138]' role='dimension' type='nominal'>
-              <calculation class='tableau' formula='IF     [Percent Asian]    &gt;=.5 then &quot;Asian&quot;&#10;ELSEIF [Percent Black]    &gt;=.5 then &quot;Black&quot;&#10;ELSEIF [Percent Hispanic] &gt;=.5 then &quot;Hispanic&quot;&#10;ELSEIF [Percent ELL]      &gt;=.5 then &quot;ELL&quot;&#10;ELSEIF [Percent White]    &gt;=.5 then &quot;White&quot;&#10;ELSEIF [Percent Black / Hispanic]    &gt;=.5 then &quot;Black / Hispanic&quot;&#10;ELSE &quot;Distributed&quot;&#10;END' />
-            </column>
-            <column datatype='real' name='[Economic Need Index]' role='measure' type='quantitative' />
             <column datatype='integer' name='[Grade 3 ELA 4s - American Indian or Alaska Native]' role='measure' type='quantitative' />
             <column datatype='integer' name='[Grade 3 ELA 4s - Asian or Pacific Islander]' role='measure' type='quantitative' />
             <column datatype='integer' name='[Grade 3 ELA 4s - Black or African American]' role='measure' type='quantitative' />
@@ -5406,15 +5411,7 @@
             <column datatype='integer' name='[Grade 8 Math 4s - Limited English Proficient]' role='measure' type='quantitative' />
             <column datatype='integer' name='[Grade 8 Math 4s - Multiracial]' role='measure' type='quantitative' />
             <column datatype='integer' name='[Grade 8 Math 4s - White]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Asian]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black / Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent ELL]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent White]' role='measure' type='quantitative' />
             <column aggregation='CountD' datatype='real' default-format='C1033%' name='[School Income Estimate]' role='measure' type='quantitative' />
-            <column-instance column='[Calculation_4684095473945264138]' derivation='None' name='[none:Calculation_4684095473945264138:nk]' pivot='key' type='nominal' />
-            <column-instance column='[Economic Need Index]' derivation='None' name='[none:Economic Need Index:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='None' name='[none:School Income Estimate:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Grade 3 ELA 4s - American Indian or Alaska Native]' derivation='Sum' name='[sum:Grade 3 ELA 4s - American Indian or Alaska Native:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Grade 3 ELA 4s - Asian or Pacific Islander]' derivation='Sum' name='[sum:Grade 3 ELA 4s - Asian or Pacific Islander:qk]' pivot='key' type='quantitative' />
@@ -5781,8 +5778,6 @@
           </manual-sort>
           <slices>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[:Measure Names]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]</column>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:School Income Estimate:qk]</column>
           </slices>
           <aggregation value='true' />
@@ -5827,12 +5822,8 @@
             <datasource caption='2016 School Explorer' name='federated.1fxbcu309k6ye91h9tfk40nggdp5' />
           </datasources>
           <datasource-dependencies datasource='federated.1fxbcu309k6ye91h9tfk40nggdp5'>
-            <column caption='Major Ethnicity' datatype='string' name='[Calculation_4684095473945264138]' role='dimension' type='nominal'>
-              <calculation class='tableau' formula='IF     [Percent Asian]    &gt;=.5 then &quot;Asian&quot;&#10;ELSEIF [Percent Black]    &gt;=.5 then &quot;Black&quot;&#10;ELSEIF [Percent Hispanic] &gt;=.5 then &quot;Hispanic&quot;&#10;ELSEIF [Percent ELL]      &gt;=.5 then &quot;ELL&quot;&#10;ELSEIF [Percent White]    &gt;=.5 then &quot;White&quot;&#10;ELSEIF [Percent Black / Hispanic]    &gt;=.5 then &quot;Black / Hispanic&quot;&#10;ELSE &quot;Distributed&quot;&#10;END' />
-            </column>
             <column datatype='string' name='[City]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
             <column aggregation='Sum' datatype='integer' name='[District]' role='dimension' type='ordinal' />
-            <column datatype='real' name='[Economic Need Index]' role='measure' type='quantitative' />
             <column datatype='integer' name='[Grade 3 ELA - All Students Tested]' role='measure' type='quantitative' />
             <column datatype='integer' name='[Grade 3 ELA 4s - All Students]' role='measure' type='quantitative' />
             <column datatype='integer' name='[Grade 3 ELA 4s - American Indian or Alaska Native]' role='measure' type='quantitative' />
@@ -5953,17 +5944,9 @@
             <column datatype='integer' name='[Grade 8 Math 4s - Limited English Proficient]' role='measure' type='quantitative' />
             <column datatype='integer' name='[Grade 8 Math 4s - Multiracial]' role='measure' type='quantitative' />
             <column datatype='integer' name='[Grade 8 Math 4s - White]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Asian]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black / Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent ELL]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent White]' role='measure' type='quantitative' />
             <column aggregation='CountD' datatype='real' default-format='C1033%' name='[School Income Estimate]' role='measure' type='quantitative' />
-            <column-instance column='[Calculation_4684095473945264138]' derivation='None' name='[none:Calculation_4684095473945264138:nk]' pivot='key' type='nominal' />
             <column-instance column='[City]' derivation='None' name='[none:City:nk]' pivot='key' type='nominal' />
             <column-instance column='[District]' derivation='None' name='[none:District:ok]' pivot='key' type='ordinal' />
-            <column-instance column='[Economic Need Index]' derivation='None' name='[none:Economic Need Index:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='None' name='[none:School Income Estimate:qk]' pivot='key' type='quantitative' />
             <column-instance column='[District]' derivation='Sum' name='[sum:District:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Grade 3 ELA - All Students Tested]' derivation='Sum' name='[sum:Grade 3 ELA - All Students Tested:qk]' pivot='key' type='quantitative' />
@@ -6214,8 +6197,6 @@
           </filter>
           <slices>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[:Measure Names]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]</column>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:School Income Estimate:qk]</column>
           </slices>
           <aggregation value='true' />
@@ -6256,26 +6237,12 @@
             <mapsource name='Tableau' />
           </mapsources>
           <datasource-dependencies datasource='federated.1fxbcu309k6ye91h9tfk40nggdp5'>
-            <column caption='Major Ethnicity' datatype='string' name='[Calculation_4684095473945264138]' role='dimension' type='nominal'>
-              <calculation class='tableau' formula='IF     [Percent Asian]    &gt;=.5 then &quot;Asian&quot;&#10;ELSEIF [Percent Black]    &gt;=.5 then &quot;Black&quot;&#10;ELSEIF [Percent Hispanic] &gt;=.5 then &quot;Hispanic&quot;&#10;ELSEIF [Percent ELL]      &gt;=.5 then &quot;ELL&quot;&#10;ELSEIF [Percent White]    &gt;=.5 then &quot;White&quot;&#10;ELSEIF [Percent Black / Hispanic]    &gt;=.5 then &quot;Black / Hispanic&quot;&#10;ELSE &quot;Distributed&quot;&#10;END' />
-            </column>
-            <column datatype='real' name='[Economic Need Index]' role='measure' type='quantitative' />
             <column datatype='integer' name='[Grade 3 ELA - All Students Tested]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Asian]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black / Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent ELL]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent White]' role='measure' type='quantitative' />
             <column aggregation='CountD' datatype='real' default-format='C1033%' name='[School Income Estimate]' role='measure' type='quantitative' />
-            <column-instance column='[Calculation_4684095473945264138]' derivation='None' name='[none:Calculation_4684095473945264138:nk]' pivot='key' type='nominal' />
-            <column-instance column='[Economic Need Index]' derivation='None' name='[none:Economic Need Index:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='None' name='[none:School Income Estimate:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Grade 3 ELA - All Students Tested]' derivation='Sum' name='[sum:Grade 3 ELA - All Students Tested:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
           <slices>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]</column>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:School Income Estimate:qk]</column>
           </slices>
           <aggregation value='true' />
@@ -6311,20 +6278,10 @@
           <datasource-dependencies datasource='federated.1fxbcu309k6ye91h9tfk40nggdp5'>
             <column datatype='real' name='[Average ELA Proficiency]' role='measure' type='quantitative' />
             <column datatype='real' name='[Average Math Proficiency]' role='measure' type='quantitative' />
-            <column caption='Major Ethnicity' datatype='string' name='[Calculation_4684095473945264138]' role='dimension' type='nominal'>
-              <calculation class='tableau' formula='IF     [Percent Asian]    &gt;=.5 then &quot;Asian&quot;&#10;ELSEIF [Percent Black]    &gt;=.5 then &quot;Black&quot;&#10;ELSEIF [Percent Hispanic] &gt;=.5 then &quot;Hispanic&quot;&#10;ELSEIF [Percent ELL]      &gt;=.5 then &quot;ELL&quot;&#10;ELSEIF [Percent White]    &gt;=.5 then &quot;White&quot;&#10;ELSEIF [Percent Black / Hispanic]    &gt;=.5 then &quot;Black / Hispanic&quot;&#10;ELSE &quot;Distributed&quot;&#10;END' />
-            </column>
-            <column datatype='real' name='[Economic Need Index]' role='measure' type='quantitative' />
             <column datatype='real' name='[Percent Asian]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black / Hispanic]' role='measure' type='quantitative' />
             <column datatype='real' name='[Percent Black]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent ELL]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent White]' role='measure' type='quantitative' />
             <column aggregation='CountD' datatype='real' default-format='C1033%' name='[School Income Estimate]' role='measure' type='quantitative' />
             <column datatype='real' name='[Supportive Environment %]' role='measure' type='quantitative' />
-            <column-instance column='[Calculation_4684095473945264138]' derivation='None' name='[none:Calculation_4684095473945264138:nk]' pivot='key' type='nominal' />
-            <column-instance column='[Economic Need Index]' derivation='None' name='[none:Economic Need Index:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='None' name='[none:School Income Estimate:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Average ELA Proficiency]' derivation='Sum' name='[sum:Average ELA Proficiency:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Average Math Proficiency]' derivation='Sum' name='[sum:Average Math Proficiency:qk]' pivot='key' type='quantitative' />
@@ -6333,8 +6290,6 @@
             <column-instance column='[Supportive Environment %]' derivation='Sum' name='[sum:Supportive Environment %:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
           <slices>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]</column>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:School Income Estimate:qk]</column>
           </slices>
           <aggregation value='false' />
@@ -6403,28 +6358,15 @@
             <mapsource name='Tableau' />
           </mapsources>
           <datasource-dependencies datasource='federated.1fxbcu309k6ye91h9tfk40nggdp5'>
-            <column caption='Major Ethnicity' datatype='string' name='[Calculation_4684095473945264138]' role='dimension' type='nominal'>
-              <calculation class='tableau' formula='IF     [Percent Asian]    &gt;=.5 then &quot;Asian&quot;&#10;ELSEIF [Percent Black]    &gt;=.5 then &quot;Black&quot;&#10;ELSEIF [Percent Hispanic] &gt;=.5 then &quot;Hispanic&quot;&#10;ELSEIF [Percent ELL]      &gt;=.5 then &quot;ELL&quot;&#10;ELSEIF [Percent White]    &gt;=.5 then &quot;White&quot;&#10;ELSEIF [Percent Black / Hispanic]    &gt;=.5 then &quot;Black / Hispanic&quot;&#10;ELSE &quot;Distributed&quot;&#10;END' />
-            </column>
             <column datatype='string' name='[City]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
             <column datatype='real' name='[Economic Need Index]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Asian]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black / Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent ELL]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent White]' role='measure' type='quantitative' />
             <column aggregation='CountD' datatype='real' default-format='C1033%' name='[School Income Estimate]' role='measure' type='quantitative' />
             <column-instance column='[Economic Need Index]' derivation='Avg' name='[avg:Economic Need Index:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[Calculation_4684095473945264138]' derivation='None' name='[none:Calculation_4684095473945264138:nk]' pivot='key' type='nominal' />
             <column-instance column='[City]' derivation='None' name='[none:City:nk]' pivot='key' type='nominal' />
-            <column-instance column='[Economic Need Index]' derivation='None' name='[none:Economic Need Index:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='None' name='[none:School Income Estimate:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='Sum' name='[sum:School Income Estimate:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
           <slices>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]</column>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:School Income Estimate:qk]</column>
           </slices>
           <aggregation value='true' />
@@ -6485,6 +6427,63 @@
       </table>
       <simple-id uuid='{A63BD273-948B-41E8-9FC5-814685016443}' />
     </worksheet>
+    <worksheet name='Sheet 43'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='2016 School Explorer' name='federated.1fxbcu309k6ye91h9tfk40nggdp5' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1fxbcu309k6ye91h9tfk40nggdp5'>
+            <column aggregation='None' caption='Economic Need Index (bin)' datatype='integer' name='[Economic Need Index (bin)]' role='dimension' type='ordinal'>
+              <calculation class='bin' decimals='-2' formula='[Economic Need Index]' peg='0' size='0.05' />
+            </column>
+            <column datatype='real' name='[Economic Need Index]' role='measure' type='quantitative' />
+            <column caption='Schools' datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+              <calculation class='tableau' formula='1' />
+            </column>
+            <column aggregation='CountD' datatype='real' default-format='C1033%' name='[School Income Estimate]' role='measure' type='quantitative' />
+            <column-instance column='[Economic Need Index]' derivation='Avg' name='[avg:Economic Need Index:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Economic Need Index]' derivation='Median' name='[med:Economic Need Index:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Economic Need Index (bin)]' derivation='None' name='[none:Economic Need Index (bin):ok]' pivot='key' type='ordinal' />
+            <column-instance column='[School Income Estimate]' derivation='None' name='[none:School Income Estimate:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Number of Records]' derivation='Sum' name='[sum:Number of Records:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.1fxbcu309k6ye91h9tfk40nggdp5].[avg:Economic Need Index:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.1fxbcu309k6ye91h9tfk40nggdp5].[med:Economic Need Index:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.1fxbcu309k6ye91h9tfk40nggdp5].[sum:Number of Records:qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:School Income Estimate:qk]</column>
+            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[:Measure Names]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[Multiple Values]' />
+              <lod column='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[sum:Number of Records:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index (bin):ok]</rows>
+        <cols>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[:Measure Names]</cols>
+      </table>
+      <simple-id uuid='{C74F932C-672B-4658-9790-B5E79D710282}' />
+    </worksheet>
     <worksheet name='Student Attendance - Black'>
       <layout-options>
         <title>
@@ -6502,28 +6501,17 @@
             <mapsource name='Tableau' />
           </mapsources>
           <datasource-dependencies datasource='federated.1fxbcu309k6ye91h9tfk40nggdp5'>
-            <column caption='Major Ethnicity' datatype='string' name='[Calculation_4684095473945264138]' role='dimension' type='nominal'>
-              <calculation class='tableau' formula='IF     [Percent Asian]    &gt;=.5 then &quot;Asian&quot;&#10;ELSEIF [Percent Black]    &gt;=.5 then &quot;Black&quot;&#10;ELSEIF [Percent Hispanic] &gt;=.5 then &quot;Hispanic&quot;&#10;ELSEIF [Percent ELL]      &gt;=.5 then &quot;ELL&quot;&#10;ELSEIF [Percent White]    &gt;=.5 then &quot;White&quot;&#10;ELSEIF [Percent Black / Hispanic]    &gt;=.5 then &quot;Black / Hispanic&quot;&#10;ELSE &quot;Distributed&quot;&#10;END' />
-            </column>
             <column datatype='string' name='[City]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
-            <column datatype='real' name='[Economic Need Index]' role='measure' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Latitude]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Longitude]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
-            <column datatype='real' name='[Percent Asian]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black / Hispanic]' role='measure' type='quantitative' />
             <column datatype='real' name='[Percent Black]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent ELL]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent White]' role='measure' type='quantitative' />
             <column aggregation='CountD' datatype='real' default-format='C1033%' name='[School Income Estimate]' role='measure' type='quantitative' />
             <column datatype='string' name='[School Name]' role='dimension' type='nominal' />
             <column datatype='real' name='[Student Attendance Rate]' role='measure' type='quantitative' />
             <column-instance column='[School Name]' derivation='Attribute' name='[attr:School Name:nk]' pivot='key' type='nominal' />
             <column-instance column='[Latitude]' derivation='Avg' name='[avg:Latitude:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Longitude]' derivation='Avg' name='[avg:Longitude:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[Calculation_4684095473945264138]' derivation='None' name='[none:Calculation_4684095473945264138:nk]' pivot='key' type='nominal' />
             <column-instance column='[City]' derivation='None' name='[none:City:nk]' pivot='key' type='nominal' />
-            <column-instance column='[Economic Need Index]' derivation='None' name='[none:Economic Need Index:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='None' name='[none:School Income Estimate:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Student Attendance Rate]' derivation='None' name='[none:Student Attendance Rate:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Percent Black]' derivation='Sum' name='[sum:Percent Black:qk]' pivot='key' type='quantitative' />
@@ -6535,8 +6523,6 @@
           </filter>
           <slices>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Student Attendance Rate:qk]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]</column>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:School Income Estimate:qk]</column>
           </slices>
           <aggregation value='false' />
@@ -6608,28 +6594,17 @@
             <mapsource name='Tableau' />
           </mapsources>
           <datasource-dependencies datasource='federated.1fxbcu309k6ye91h9tfk40nggdp5'>
-            <column caption='Major Ethnicity' datatype='string' name='[Calculation_4684095473945264138]' role='dimension' type='nominal'>
-              <calculation class='tableau' formula='IF     [Percent Asian]    &gt;=.5 then &quot;Asian&quot;&#10;ELSEIF [Percent Black]    &gt;=.5 then &quot;Black&quot;&#10;ELSEIF [Percent Hispanic] &gt;=.5 then &quot;Hispanic&quot;&#10;ELSEIF [Percent ELL]      &gt;=.5 then &quot;ELL&quot;&#10;ELSEIF [Percent White]    &gt;=.5 then &quot;White&quot;&#10;ELSEIF [Percent Black / Hispanic]    &gt;=.5 then &quot;Black / Hispanic&quot;&#10;ELSE &quot;Distributed&quot;&#10;END' />
-            </column>
             <column datatype='string' name='[City]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
-            <column datatype='real' name='[Economic Need Index]' role='measure' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Latitude]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Longitude]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
-            <column datatype='real' name='[Percent Asian]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black / Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent ELL]' role='measure' type='quantitative' />
             <column datatype='real' name='[Percent Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent White]' role='measure' type='quantitative' />
             <column aggregation='CountD' datatype='real' default-format='C1033%' name='[School Income Estimate]' role='measure' type='quantitative' />
             <column datatype='string' name='[School Name]' role='dimension' type='nominal' />
             <column datatype='real' name='[Student Attendance Rate]' role='measure' type='quantitative' />
             <column-instance column='[School Name]' derivation='Attribute' name='[attr:School Name:nk]' pivot='key' type='nominal' />
             <column-instance column='[Latitude]' derivation='Avg' name='[avg:Latitude:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Longitude]' derivation='Avg' name='[avg:Longitude:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[Calculation_4684095473945264138]' derivation='None' name='[none:Calculation_4684095473945264138:nk]' pivot='key' type='nominal' />
             <column-instance column='[City]' derivation='None' name='[none:City:nk]' pivot='key' type='nominal' />
-            <column-instance column='[Economic Need Index]' derivation='None' name='[none:Economic Need Index:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='None' name='[none:School Income Estimate:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Student Attendance Rate]' derivation='None' name='[none:Student Attendance Rate:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Percent Hispanic]' derivation='Sum' name='[sum:Percent Hispanic:qk]' pivot='key' type='quantitative' />
@@ -6640,8 +6615,6 @@
           </filter>
           <slices>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Student Attendance Rate:qk]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]</column>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:School Income Estimate:qk]</column>
           </slices>
           <aggregation value='false' />
@@ -6713,18 +6686,9 @@
             <mapsource name='Tableau' />
           </mapsources>
           <datasource-dependencies datasource='federated.1fxbcu309k6ye91h9tfk40nggdp5'>
-            <column caption='Major Ethnicity' datatype='string' name='[Calculation_4684095473945264138]' role='dimension' type='nominal'>
-              <calculation class='tableau' formula='IF     [Percent Asian]    &gt;=.5 then &quot;Asian&quot;&#10;ELSEIF [Percent Black]    &gt;=.5 then &quot;Black&quot;&#10;ELSEIF [Percent Hispanic] &gt;=.5 then &quot;Hispanic&quot;&#10;ELSEIF [Percent ELL]      &gt;=.5 then &quot;ELL&quot;&#10;ELSEIF [Percent White]    &gt;=.5 then &quot;White&quot;&#10;ELSEIF [Percent Black / Hispanic]    &gt;=.5 then &quot;Black / Hispanic&quot;&#10;ELSE &quot;Distributed&quot;&#10;END' />
-            </column>
             <column datatype='string' name='[City]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
-            <column datatype='real' name='[Economic Need Index]' role='measure' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Latitude]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Longitude]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
-            <column datatype='real' name='[Percent Asian]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black / Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent ELL]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Hispanic]' role='measure' type='quantitative' />
             <column datatype='real' name='[Percent White]' role='measure' type='quantitative' />
             <column aggregation='CountD' datatype='real' default-format='C1033%' name='[School Income Estimate]' role='measure' type='quantitative' />
             <column datatype='string' name='[School Name]' role='dimension' type='nominal' />
@@ -6732,9 +6696,7 @@
             <column-instance column='[School Name]' derivation='Attribute' name='[attr:School Name:nk]' pivot='key' type='nominal' />
             <column-instance column='[Latitude]' derivation='Avg' name='[avg:Latitude:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Longitude]' derivation='Avg' name='[avg:Longitude:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[Calculation_4684095473945264138]' derivation='None' name='[none:Calculation_4684095473945264138:nk]' pivot='key' type='nominal' />
             <column-instance column='[City]' derivation='None' name='[none:City:nk]' pivot='key' type='nominal' />
-            <column-instance column='[Economic Need Index]' derivation='None' name='[none:Economic Need Index:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='None' name='[none:School Income Estimate:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Student Attendance Rate]' derivation='None' name='[none:Student Attendance Rate:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Percent White]' derivation='Sum' name='[sum:Percent White:qk]' pivot='key' type='quantitative' />
@@ -6746,8 +6708,6 @@
           </filter>
           <slices>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Student Attendance Rate:qk]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]</column>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:School Income Estimate:qk]</column>
           </slices>
           <aggregation value='false' />
@@ -6809,27 +6769,16 @@
             <datasource caption='2016 School Explorer' name='federated.1fxbcu309k6ye91h9tfk40nggdp5' />
           </datasources>
           <datasource-dependencies datasource='federated.1fxbcu309k6ye91h9tfk40nggdp5'>
-            <column caption='Major Ethnicity' datatype='string' name='[Calculation_4684095473945264138]' role='dimension' type='nominal'>
-              <calculation class='tableau' formula='IF     [Percent Asian]    &gt;=.5 then &quot;Asian&quot;&#10;ELSEIF [Percent Black]    &gt;=.5 then &quot;Black&quot;&#10;ELSEIF [Percent Hispanic] &gt;=.5 then &quot;Hispanic&quot;&#10;ELSEIF [Percent ELL]      &gt;=.5 then &quot;ELL&quot;&#10;ELSEIF [Percent White]    &gt;=.5 then &quot;White&quot;&#10;ELSEIF [Percent Black / Hispanic]    &gt;=.5 then &quot;Black / Hispanic&quot;&#10;ELSE &quot;Distributed&quot;&#10;END' />
-            </column>
             <column caption='Lat' datatype='real' name='[Calculation_4684095474476171279]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='[Latitude]' />
             </column>
             <column caption='Long' datatype='real' name='[Calculation_4684095474476236816]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='[Longitude]' />
             </column>
-            <column datatype='real' name='[Economic Need Index]' role='measure' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Latitude]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Longitude]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
             <column datatype='real' name='[Percent Asian]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black / Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent ELL]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent White]' role='measure' type='quantitative' />
             <column aggregation='CountD' datatype='real' default-format='C1033%' name='[School Income Estimate]' role='measure' type='quantitative' />
-            <column-instance column='[Calculation_4684095473945264138]' derivation='None' name='[none:Calculation_4684095473945264138:nk]' pivot='key' type='nominal' />
-            <column-instance column='[Economic Need Index]' derivation='None' name='[none:Economic Need Index:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='None' name='[none:School Income Estimate:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Calculation_4684095474476171279]' derivation='Sum' name='[sum:Calculation_4684095474476171279:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Calculation_4684095474476236816]' derivation='Sum' name='[sum:Calculation_4684095474476236816:qk]' pivot='key' type='quantitative' />
@@ -6837,8 +6786,6 @@
             <column-instance column='[School Income Estimate]' derivation='Sum' name='[sum:School Income Estimate:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
           <slices>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]</column>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:School Income Estimate:qk]</column>
           </slices>
           <aggregation value='false' />
@@ -6876,27 +6823,16 @@
             <datasource caption='2016 School Explorer' name='federated.1fxbcu309k6ye91h9tfk40nggdp5' />
           </datasources>
           <datasource-dependencies datasource='federated.1fxbcu309k6ye91h9tfk40nggdp5'>
-            <column caption='Major Ethnicity' datatype='string' name='[Calculation_4684095473945264138]' role='dimension' type='nominal'>
-              <calculation class='tableau' formula='IF     [Percent Asian]    &gt;=.5 then &quot;Asian&quot;&#10;ELSEIF [Percent Black]    &gt;=.5 then &quot;Black&quot;&#10;ELSEIF [Percent Hispanic] &gt;=.5 then &quot;Hispanic&quot;&#10;ELSEIF [Percent ELL]      &gt;=.5 then &quot;ELL&quot;&#10;ELSEIF [Percent White]    &gt;=.5 then &quot;White&quot;&#10;ELSEIF [Percent Black / Hispanic]    &gt;=.5 then &quot;Black / Hispanic&quot;&#10;ELSE &quot;Distributed&quot;&#10;END' />
-            </column>
             <column caption='Lat' datatype='real' name='[Calculation_4684095474476171279]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='[Latitude]' />
             </column>
             <column caption='Long' datatype='real' name='[Calculation_4684095474476236816]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='[Longitude]' />
             </column>
-            <column datatype='real' name='[Economic Need Index]' role='measure' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Latitude]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Longitude]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
-            <column datatype='real' name='[Percent Asian]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black / Hispanic]' role='measure' type='quantitative' />
             <column datatype='real' name='[Percent Black]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent ELL]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent White]' role='measure' type='quantitative' />
             <column aggregation='CountD' datatype='real' default-format='C1033%' name='[School Income Estimate]' role='measure' type='quantitative' />
-            <column-instance column='[Calculation_4684095473945264138]' derivation='None' name='[none:Calculation_4684095473945264138:nk]' pivot='key' type='nominal' />
-            <column-instance column='[Economic Need Index]' derivation='None' name='[none:Economic Need Index:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='None' name='[none:School Income Estimate:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Calculation_4684095474476171279]' derivation='Sum' name='[sum:Calculation_4684095474476171279:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Calculation_4684095474476236816]' derivation='Sum' name='[sum:Calculation_4684095474476236816:qk]' pivot='key' type='quantitative' />
@@ -6904,8 +6840,6 @@
             <column-instance column='[School Income Estimate]' derivation='Sum' name='[sum:School Income Estimate:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
           <slices>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]</column>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:School Income Estimate:qk]</column>
           </slices>
           <aggregation value='false' />
@@ -6943,9 +6877,6 @@
             <datasource caption='2016 School Explorer' name='federated.1fxbcu309k6ye91h9tfk40nggdp5' />
           </datasources>
           <datasource-dependencies datasource='federated.1fxbcu309k6ye91h9tfk40nggdp5'>
-            <column caption='Major Ethnicity' datatype='string' name='[Calculation_4684095473945264138]' role='dimension' type='nominal'>
-              <calculation class='tableau' formula='IF     [Percent Asian]    &gt;=.5 then &quot;Asian&quot;&#10;ELSEIF [Percent Black]    &gt;=.5 then &quot;Black&quot;&#10;ELSEIF [Percent Hispanic] &gt;=.5 then &quot;Hispanic&quot;&#10;ELSEIF [Percent ELL]      &gt;=.5 then &quot;ELL&quot;&#10;ELSEIF [Percent White]    &gt;=.5 then &quot;White&quot;&#10;ELSEIF [Percent Black / Hispanic]    &gt;=.5 then &quot;Black / Hispanic&quot;&#10;ELSE &quot;Distributed&quot;&#10;END' />
-            </column>
             <column caption='Lat' datatype='real' name='[Calculation_4684095474476171279]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='[Latitude]' />
             </column>
@@ -6955,15 +6886,7 @@
             <column datatype='real' name='[Economic Need Index]' role='measure' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Latitude]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Longitude]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
-            <column datatype='real' name='[Percent Asian]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black / Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent ELL]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent White]' role='measure' type='quantitative' />
             <column aggregation='CountD' datatype='real' default-format='C1033%' name='[School Income Estimate]' role='measure' type='quantitative' />
-            <column-instance column='[Calculation_4684095473945264138]' derivation='None' name='[none:Calculation_4684095473945264138:nk]' pivot='key' type='nominal' />
-            <column-instance column='[Economic Need Index]' derivation='None' name='[none:Economic Need Index:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='None' name='[none:School Income Estimate:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Calculation_4684095474476171279]' derivation='Sum' name='[sum:Calculation_4684095474476171279:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Calculation_4684095474476236816]' derivation='Sum' name='[sum:Calculation_4684095474476236816:qk]' pivot='key' type='quantitative' />
@@ -6971,8 +6894,6 @@
             <column-instance column='[School Income Estimate]' derivation='Sum' name='[sum:School Income Estimate:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
           <slices>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]</column>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:School Income Estimate:qk]</column>
           </slices>
           <aggregation value='false' />
@@ -7010,27 +6931,16 @@
             <datasource caption='2016 School Explorer' name='federated.1fxbcu309k6ye91h9tfk40nggdp5' />
           </datasources>
           <datasource-dependencies datasource='federated.1fxbcu309k6ye91h9tfk40nggdp5'>
-            <column caption='Major Ethnicity' datatype='string' name='[Calculation_4684095473945264138]' role='dimension' type='nominal'>
-              <calculation class='tableau' formula='IF     [Percent Asian]    &gt;=.5 then &quot;Asian&quot;&#10;ELSEIF [Percent Black]    &gt;=.5 then &quot;Black&quot;&#10;ELSEIF [Percent Hispanic] &gt;=.5 then &quot;Hispanic&quot;&#10;ELSEIF [Percent ELL]      &gt;=.5 then &quot;ELL&quot;&#10;ELSEIF [Percent White]    &gt;=.5 then &quot;White&quot;&#10;ELSEIF [Percent Black / Hispanic]    &gt;=.5 then &quot;Black / Hispanic&quot;&#10;ELSE &quot;Distributed&quot;&#10;END' />
-            </column>
             <column caption='Lat' datatype='real' name='[Calculation_4684095474476171279]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='[Latitude]' />
             </column>
             <column caption='Long' datatype='real' name='[Calculation_4684095474476236816]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='[Longitude]' />
             </column>
-            <column datatype='real' name='[Economic Need Index]' role='measure' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Latitude]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Longitude]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
-            <column datatype='real' name='[Percent Asian]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black / Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent ELL]' role='measure' type='quantitative' />
             <column datatype='real' name='[Percent Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent White]' role='measure' type='quantitative' />
             <column aggregation='CountD' datatype='real' default-format='C1033%' name='[School Income Estimate]' role='measure' type='quantitative' />
-            <column-instance column='[Calculation_4684095473945264138]' derivation='None' name='[none:Calculation_4684095473945264138:nk]' pivot='key' type='nominal' />
-            <column-instance column='[Economic Need Index]' derivation='None' name='[none:Economic Need Index:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='None' name='[none:School Income Estimate:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Calculation_4684095474476171279]' derivation='Sum' name='[sum:Calculation_4684095474476171279:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Calculation_4684095474476236816]' derivation='Sum' name='[sum:Calculation_4684095474476236816:qk]' pivot='key' type='quantitative' />
@@ -7038,8 +6948,6 @@
             <column-instance column='[School Income Estimate]' derivation='Sum' name='[sum:School Income Estimate:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
           <slices>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]</column>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:School Income Estimate:qk]</column>
           </slices>
           <aggregation value='false' />
@@ -7077,27 +6985,16 @@
             <datasource caption='2016 School Explorer' name='federated.1fxbcu309k6ye91h9tfk40nggdp5' />
           </datasources>
           <datasource-dependencies datasource='federated.1fxbcu309k6ye91h9tfk40nggdp5'>
-            <column caption='Major Ethnicity' datatype='string' name='[Calculation_4684095473945264138]' role='dimension' type='nominal'>
-              <calculation class='tableau' formula='IF     [Percent Asian]    &gt;=.5 then &quot;Asian&quot;&#10;ELSEIF [Percent Black]    &gt;=.5 then &quot;Black&quot;&#10;ELSEIF [Percent Hispanic] &gt;=.5 then &quot;Hispanic&quot;&#10;ELSEIF [Percent ELL]      &gt;=.5 then &quot;ELL&quot;&#10;ELSEIF [Percent White]    &gt;=.5 then &quot;White&quot;&#10;ELSEIF [Percent Black / Hispanic]    &gt;=.5 then &quot;Black / Hispanic&quot;&#10;ELSE &quot;Distributed&quot;&#10;END' />
-            </column>
             <column caption='Lat' datatype='real' name='[Calculation_4684095474476171279]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='[Latitude]' />
             </column>
             <column caption='Long' datatype='real' name='[Calculation_4684095474476236816]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='[Longitude]' />
             </column>
-            <column datatype='real' name='[Economic Need Index]' role='measure' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Latitude]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
             <column aggregation='Avg' datatype='real' name='[Longitude]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
-            <column datatype='real' name='[Percent Asian]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black / Hispanic]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Black]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent ELL]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Percent Hispanic]' role='measure' type='quantitative' />
             <column datatype='real' name='[Percent White]' role='measure' type='quantitative' />
             <column aggregation='CountD' datatype='real' default-format='C1033%' name='[School Income Estimate]' role='measure' type='quantitative' />
-            <column-instance column='[Calculation_4684095473945264138]' derivation='None' name='[none:Calculation_4684095473945264138:nk]' pivot='key' type='nominal' />
-            <column-instance column='[Economic Need Index]' derivation='None' name='[none:Economic Need Index:qk]' pivot='key' type='quantitative' />
             <column-instance column='[School Income Estimate]' derivation='None' name='[none:School Income Estimate:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Calculation_4684095474476171279]' derivation='Sum' name='[sum:Calculation_4684095474476171279:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Calculation_4684095474476236816]' derivation='Sum' name='[sum:Calculation_4684095474476236816:qk]' pivot='key' type='quantitative' />
@@ -7105,8 +7002,6 @@
             <column-instance column='[School Income Estimate]' derivation='Sum' name='[sum:School Income Estimate:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
           <slices>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]</column>
-            <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]</column>
             <column>[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:School Income Estimate:qk]</column>
           </slices>
           <aggregation value='false' />
@@ -7139,6 +7034,102 @@
     </worksheet>
   </worksheets>
   <dashboards>
+    <dashboard name='Cities, School Income and Economic Need Index'>
+      <style>
+        <style-rule element='dash-subtitle'>
+          <format attr='background-color' value='#ffffff' />
+        </style-rule>
+      </style>
+      <size maxheight='800' maxwidth='1000' minheight='800' minwidth='1000' />
+      <datasources>
+        <datasource caption='2016 School Explorer' name='federated.1fxbcu309k6ye91h9tfk40nggdp5' />
+      </datasources>
+      <datasource-dependencies datasource='federated.1fxbcu309k6ye91h9tfk40nggdp5'>
+        <column aggregation='None' caption='Economic Need Index (bin)' datatype='integer' name='[Economic Need Index (bin)]' role='dimension' type='ordinal'>
+          <calculation class='bin' decimals='-2' formula='[Economic Need Index]' peg='0' size='0.05' />
+        </column>
+        <column datatype='real' name='[Economic Need Index]' role='measure' type='quantitative' />
+        <column-instance column='[Economic Need Index (bin)]' derivation='None' name='[none:Economic Need Index (bin):ok]' pivot='key' type='ordinal' />
+        <column-instance column='[Economic Need Index]' derivation='None' name='[none:Economic Need Index:qk]' pivot='key' type='quantitative' />
+      </datasource-dependencies>
+      <zones>
+        <zone h='100000' id='2' type='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98000' id='10' param='horz' type='layout-flow' w='98400' x='800' y='1000'>
+            <zone h='98000' id='5' param='horz' type='layout-flow' w='82400' x='800' y='1000'>
+              <zone h='98000' id='3' type='layout-basic' w='82400' x='800' y='1000'>
+                <zone h='98000' id='7' name='Cities, School Income and Economic Need Index ' w='82400' x='800' y='1000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+              </zone>
+            </zone>
+            <zone fixed-size='160' h='98000' id='9' is-fixed='true' param='vert' type='layout-flow' w='16000' x='83200' y='1000'>
+              <zone h='9375' id='11' mode='slider' name='Schools by Major Ethnic Population' param='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index (bin):ok]' type='filter' w='16000' x='83200' y='1000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='8625' id='12' name='Schools by Major Ethnic Population' param='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]' show-domain='false' show-null-ctrls='false' type='filter' w='16000' x='83200' y='10375'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='8125' id='13' name='Schools by Major Ethnic Population' pane-specification-id='0' param='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[sum:Economic Need Index:qk]' type='color' w='16000' x='83200' y='19000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='15750' id='14' name='Schools by Major Ethnic Population' pane-specification-id='0' param='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[sum:School Income Estimate:qk]' type='size' w='16000' x='83200' y='27125'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='18250' id='15' name='Schools by Major Ethnic Population' pane-specification-id='0' param='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]' type='shape' w='16000' x='83200' y='42875'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+            <format attr='background-color' value='#333333' />
+          </zone-style>
+        </zone>
+        <zone h='65250' id='8' name='Schools by Major Ethnic Population' show-title='false' w='61800' x='19100' y='24250'>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='background-color' value='#333333' />
+          </zone-style>
+        </zone>
+        <zone h='33250' id='1' name='Cities, School Income and Economic Need Index - Bubble' show-title='false' w='34100' x='64400' y='57750' />
+      </zones>
+      <simple-id uuid='{63585D1A-12E4-4722-9084-791C4EE798B8}' />
+    </dashboard>
     <dashboard name='Corelations'>
       <style />
       <size maxheight='800' maxwidth='1000' minheight='800' minwidth='1000' />
@@ -7385,18 +7376,45 @@
       </zones>
       <simple-id uuid='{E9B10C85-44D1-48AF-AADF-F69AD7C14960}' />
     </dashboard>
-    <dashboard name='Dashboard 6'>
-      <style>
-        <style-rule element='dash-subtitle'>
-          <format attr='background-color' value='#ffffff' />
-        </style-rule>
-      </style>
+    <dashboard name='Dashboard 7'>
+      <style />
       <size maxheight='800' maxwidth='1000' minheight='800' minwidth='1000' />
+      <datasources>
+        <datasource caption='2016 School Explorer' name='federated.1fxbcu309k6ye91h9tfk40nggdp5' />
+      </datasources>
+      <datasource-dependencies datasource='federated.1fxbcu309k6ye91h9tfk40nggdp5'>
+        <column aggregation='None' caption='Economic Need Index (bin)' datatype='integer' name='[Economic Need Index (bin)]' role='dimension' type='ordinal'>
+          <calculation class='bin' decimals='-2' formula='[Economic Need Index]' peg='0' size='0.05' />
+        </column>
+        <column datatype='real' name='[Economic Need Index]' role='measure' type='quantitative' />
+        <column-instance column='[Economic Need Index (bin)]' derivation='None' name='[none:Economic Need Index (bin):ok]' pivot='key' type='ordinal' />
+        <column-instance column='[Economic Need Index]' derivation='None' name='[none:Economic Need Index:qk]' pivot='key' type='quantitative' />
+      </datasource-dependencies>
       <zones>
         <zone h='100000' id='2' type='layout-basic' w='100000' x='0' y='0'>
-          <zone h='98000' id='5' param='horz' type='layout-flow' w='98400' x='800' y='1000'>
-            <zone h='98000' id='3' type='layout-basic' w='98400' x='800' y='1000'>
-              <zone h='98000' id='7' name='Sheet 2' w='98400' x='800' y='1000'>
+          <zone h='98000' id='11' param='horz' type='layout-flow' w='98400' x='800' y='1000'>
+            <zone h='98000' id='5' param='horz' type='layout-flow' w='82400' x='800' y='1000'>
+              <zone h='98000' id='3' type='layout-basic' w='82400' x='800' y='1000'>
+                <zone h='65625' id='1' name='Schools by Major Ethnic Population' w='82400' x='800' y='1000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone h='32375' id='9' name='Schools by Major Ethnic Population - Bar' w='82400' x='800' y='66625'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+              </zone>
+            </zone>
+            <zone fixed-size='160' h='98000' id='10' is-fixed='true' param='vert' type='layout-flow' w='16000' x='83200' y='1000'>
+              <zone h='8625' id='12' name='Schools by Major Ethnic Population - Bar' param='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]' show-domain='false' show-null-ctrls='false' type='filter' w='16000' x='83200' y='1000'>
                 <zone-style>
                   <format attr='border-color' value='#000000' />
                   <format attr='border-style' value='none' />
@@ -7404,28 +7422,7 @@
                   <format attr='margin' value='4' />
                 </zone-style>
               </zone>
-            </zone>
-          </zone>
-          <zone-style>
-            <format attr='border-color' value='#000000' />
-            <format attr='border-style' value='none' />
-            <format attr='border-width' value='0' />
-            <format attr='margin' value='8' />
-          </zone-style>
-        </zone>
-        <zone h='56250' id='1' name='Cities, School Income and Econmic Need Index' w='43700' x='24000' y='21625' />
-        <zone h='9500' id='6' name='Cities, School Income and Econmic Need Index' pane-specification-id='0' param='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[avg:Economic Need Index:qk]' type='color' w='14000' x='52300' y='27500' />
-      </zones>
-      <simple-id uuid='{63585D1A-12E4-4722-9084-791C4EE798B8}' />
-    </dashboard>
-    <dashboard name='Dashboard 7'>
-      <style />
-      <size maxheight='800' maxwidth='1000' minheight='800' minwidth='1000' />
-      <zones>
-        <zone h='100000' id='2' type='layout-basic' w='100000' x='0' y='0'>
-          <zone h='98000' id='5' param='horz' type='layout-flow' w='98400' x='800' y='1000'>
-            <zone h='98000' id='3' type='layout-basic' w='98400' x='800' y='1000'>
-              <zone h='98000' id='1' name='Schools by Major Ethnic Population' w='98400' x='800' y='1000'>
+              <zone h='9375' id='13' mode='slider' name='Schools by Major Ethnic Population' param='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index (bin):ok]' type='filter' values='database' w='16000' x='83200' y='9625'>
                 <zone-style>
                   <format attr='border-color' value='#000000' />
                   <format attr='border-style' value='none' />
@@ -7572,65 +7569,20 @@
       </cards>
       <simple-id uuid='{F0246948-3AA7-443C-B92F-1546E1813970}' />
     </window>
-    <window class='worksheet' name='Sheet 2'>
-      <cards>
-        <edge name='left'>
-          <strip size='160'>
-            <card type='pages' />
-            <card type='filters' />
-            <card type='marks' />
-          </strip>
-        </edge>
-        <edge name='top'>
-          <strip size='2147483647'>
-            <card type='columns' />
-          </strip>
-          <strip size='2147483647'>
-            <card type='rows' />
-          </strip>
-          <strip size='31'>
-            <card type='title' />
-          </strip>
-        </edge>
-      </cards>
-      <simple-id uuid='{9A029D08-BA91-4459-8EFD-74F36175C921}' />
-    </window>
-    <window class='worksheet' name='Cities, School Income and Econmic Need Index'>
-      <cards>
-        <edge name='left'>
-          <strip size='160'>
-            <card type='pages' />
-            <card type='filters' />
-            <card type='marks' />
-          </strip>
-        </edge>
-        <edge name='top'>
-          <strip size='2147483647'>
-            <card type='columns' />
-          </strip>
-          <strip size='2147483647'>
-            <card type='rows' />
-          </strip>
-          <strip size='31'>
-            <card type='title' />
-          </strip>
-        </edge>
-        <edge name='right'>
-          <strip size='160'>
-            <card pane-specification-id='0' param='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[avg:Economic Need Index:qk]' type='color' />
-          </strip>
-        </edge>
-      </cards>
-      <simple-id uuid='{04D8E05C-0E77-4DBC-9A54-AD96FC23F0FF}' />
-    </window>
-    <window class='dashboard' name='Dashboard 6'>
+    <window class='dashboard' maximized='true' name='Cities, School Income and Economic Need Index'>
       <viewpoints>
-        <viewpoint name='Cities, School Income and Econmic Need Index' />
-        <viewpoint name='Sheet 2'>
+        <viewpoint name='Cities, School Income and Economic Need Index '>
           <zoom type='entire-view' />
         </viewpoint>
+        <viewpoint name='Cities, School Income and Economic Need Index - Bubble'>
+          <floating-toolbar-visibility value='2' />
+        </viewpoint>
+        <viewpoint name='Schools by Major Ethnic Population'>
+          <zoom type='entire-view' />
+          <floating-toolbar-visibility value='2' />
+        </viewpoint>
       </viewpoints>
-      <active id='-1' />
+      <active id='8' />
       <simple-id uuid='{9DFB05C7-68E0-4476-8420-214A47C04C1D}' />
     </window>
     <window class='worksheet' name='New York School Population'>
@@ -7665,7 +7617,7 @@
       </viewpoint>
       <simple-id uuid='{09D5E9B9-B43C-4E0C-81E0-C034696580C7}' />
     </window>
-    <window class='worksheet' maximized='true' name='New York School Population (2)'>
+    <window class='worksheet' name='New York School Population (2)'>
       <cards>
         <edge name='left'>
           <strip size='160'>
@@ -7683,6 +7635,12 @@
           </strip>
           <strip size='31'>
             <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[sum:Economic Need Index:qk]' type='color' />
+            <card pane-specification-id='0' param='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[sum:School Income Estimate:qk]' type='size' />
           </strip>
         </edge>
       </cards>
@@ -7719,9 +7677,81 @@
           <zoom type='entire-view' />
           <default-map-tool-selection tool='16' />
         </viewpoint>
+        <viewpoint name='Schools by Major Ethnic Population - Bar'>
+          <zoom type='entire-view' />
+        </viewpoint>
       </viewpoints>
-      <active id='1' />
+      <active id='13' />
       <simple-id uuid='{2F9BDF9C-1CC4-4CF9-85B4-BCC627DE4DB6}' />
+    </window>
+    <window class='worksheet' name='Schools by Major Ethnic Population'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card mode='slider' param='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index (bin):ok]' type='filter' />
+            <card param='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Economic Need Index:qk]' show-domain='false' show-null-ctrls='false' type='filter' />
+            <card pane-specification-id='0' param='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[sum:Economic Need Index:qk]' type='color' />
+            <card pane-specification-id='0' param='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[sum:School Income Estimate:qk]' type='size' />
+            <card pane-specification-id='0' param='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]' type='shape' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <floating-toolbar-visibility value='2' />
+        <geo-search-visibility value='1' />
+        <default-map-tool-selection tool='2' />
+        <map-navigation value='1' />
+      </viewpoint>
+      <simple-id uuid='{4162B9F2-CC88-490A-9302-7A4523997F8A}' />
+    </window>
+    <window class='worksheet' name='Schools by Major Ethnic Population - Bar'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <current-page>
+          <multibucket>
+            <bucket>0.89200000000000002</bucket>
+          </multibucket>
+        </current-page>
+        <default-map-tool-selection tool='2' />
+      </viewpoint>
+      <simple-id uuid='{EAAB334A-E987-4A66-9D8F-F36FDDDEB8BB}' />
     </window>
     <window class='dashboard' name='Dashboard 2'>
       <viewpoints>
@@ -8371,6 +8401,30 @@
       </cards>
       <simple-id uuid='{804D10DD-41CB-4CD3-8270-7DA5677F9BEE}' />
     </window>
+    <window class='worksheet' name='Sheet 43'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card type='measures' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{2B951949-9863-4856-BF47-6F59A0C921F5}' />
+    </window>
     <window class='worksheet' hidden='true' name='Background and 4.0 GPA'>
       <cards>
         <edge name='left'>
@@ -8423,6 +8477,54 @@
         </edge>
       </cards>
       <simple-id uuid='{70739DE8-3757-4E32-9C04-3D4517F905FC}' />
+    </window>
+    <window class='worksheet' hidden='true' name='Cities, School Income and Economic Need Index '>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{9A029D08-BA91-4459-8EFD-74F36175C921}' />
+    </window>
+    <window class='worksheet' hidden='true' name='Cities, School Income and Economic Need Index - Bubble'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[avg:Economic Need Index:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{04D8E05C-0E77-4DBC-9A54-AD96FC23F0FF}' />
     </window>
     <window class='worksheet' hidden='true' name='Collaborative Teachers'>
       <cards>
@@ -8797,39 +8899,6 @@
         <default-map-tool-selection tool='2' />
       </viewpoint>
       <simple-id uuid='{D8C5C51C-2A31-4807-AE5E-A0805E4B1D71}' />
-    </window>
-    <window class='worksheet' hidden='true' name='Schools by Major Ethnic Population'>
-      <cards>
-        <edge name='left'>
-          <strip size='160'>
-            <card type='pages' />
-            <card type='filters' />
-            <card type='marks' />
-          </strip>
-        </edge>
-        <edge name='top'>
-          <strip size='2147483647'>
-            <card type='columns' />
-          </strip>
-          <strip size='2147483647'>
-            <card type='rows' />
-          </strip>
-          <strip size='31'>
-            <card type='title' />
-          </strip>
-        </edge>
-        <edge name='right'>
-          <strip size='160'>
-            <card pane-specification-id='0' param='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[sum:Economic Need Index:qk]' type='color' />
-            <card pane-specification-id='0' param='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[sum:School Income Estimate:qk]' type='size' />
-            <card pane-specification-id='0' param='[federated.1fxbcu309k6ye91h9tfk40nggdp5].[none:Calculation_4684095473945264138:nk]' type='shape' />
-          </strip>
-        </edge>
-      </cards>
-      <viewpoint>
-        <default-map-tool-selection tool='2' />
-      </viewpoint>
-      <simple-id uuid='{4162B9F2-CC88-490A-9302-7A4523997F8A}' />
     </window>
   </windows>
 </workbook>
