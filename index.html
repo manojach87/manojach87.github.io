@@ -53,7 +53,7 @@
                     var ageDifMs = Date.now() - dt;
                     var ageDate = new Date(ageDifMs); // miliseconds from epoch
                     return Math.abs(ageDate.getUTCFullYear() - 1970);
-                  }
+    }
     birthdate1=calculateAge(birthdate1);
     var options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
     function setClassVal(className,val){
@@ -184,7 +184,7 @@
                   <script> 
                   document.getElementById('birthdateId').innerHTML=birthdate.toLocaleDateString("en-US", options);
                   </script> </li-->
-                  <li><i class="icofont-rounded-right"></i> <strong>Website:</strong> www.mlbinary.com</li>
+                  <li><i class="icofont-rounded-right"></i> <strong>Website:</strong> <a href="https://manojach87.github.io">manojach87.github.io</a></li>
                   <li><i class="icofont-rounded-right"></i> <strong>Phone:</strong> <span class="phoneClass"></span></li>
                   <li><i class="icofont-rounded-right"></i> <strong>City:</strong> Charlotte, NC, USA</li>
                 </ul>
@@ -348,16 +348,14 @@
               <h5>2018 - 2019</h5>
               <p><em>University of North Carolina, Charlotte, NC</em></p>
               <p>Advanced Business Analytics &bullet; Applied Machine Learning &bullet; Big Data Analytics for Competitive Advantage &bullet; Business Intelligence and Analytics &bullet; Cloud Computing using Azure &bullet; Consumer Analytics &bullet; Database Systems &bullet; Decision Modeling using Excel &bullet; Knowledge Discovery in Databases &bullet; Visual Analytics</p>
-              <p><em>Projects</em></p>
-              <p>World-wide Shipping Data Visualization using D3 
-                &bullet; <a href="https://manojach87.shinyapps.io/SubscriberActivity">TBATS Time Series Forecasting</a>
+              <!--p><em>Projects</em></p>
+              <p><a href="https://manojach87.shinyapps.io/SubscriberActivity" target="_projects">TBATS Time Series Forecasting (Python)</a>
                 &bullet; Twitter Sentiment analysis using Python
-                &bullet; NLP on US Politics Poll Data using Python
-                &bullet; Clustering and Classification using R
-                &bullet; Image Classification and computer vision using Tensorflow in Python
-                &bullet; Deep Learning using Tensorflow in Python
-                &bullet; Hyper Parameter Tuning
-              </p>
+                &bullet; <a href="https://manojach87.github.io/nlp/" target="_projects">NLP to Find Similarities between articles (Python|K-Means Clustering)</a>
+                &bullet; <a href="https://public.tableau.com/profile/manoj.acharya3245#!/vizhome/EducationandRacialSegregationinNYC/RacialSegrationinSchools" target="_projects">Education and Racial Segregation in NYC (Tableau)</a>
+                &bullet; <a href="https://manojach87.github.io/ship" target="_projects">World-wide Shipping Data Visualization (D3js) </a> 
+                &bullet; <a href="https://www.kaggle.com/manojacharya/fastai-implementation-after-pre-processing-images" target="_projects">Image Classification, computer vision and Deep Learning(Python|Fastai|CNN)</a>
+              </p-->
             </div>
             <div class="resume-item">
               <h4>Bachelor of Technology | Information Technology</h4>
@@ -370,7 +368,49 @@
                 Database Management Systems &bullet; 
                 Design and Analysis of Algorithms &bullet; 
                 Distributed Computing &bullet; </p>
-              <p>e-music portal using jsp and enterprise bean</p>
+              <!--p>e-music portal using jsp and enterprise bean</p-->
+            </div>
+            <h3 class="resume-title">Project Engagements</h3>
+            <div class="resume-item">
+              <h4><a href="https://www.kaggle.com/manojacharya/fastai-implementation-after-pre-processing-images" target="_projects">Image Classification, computer vision and Deep Learning</a></h4>
+              <h5>2019 - 2020</h5>
+              <p>Python &bullet; Fastai &bullet; CNN</p>
+              <p><em></em></p>
+            </div>
+            <div class="resume-item">
+              <h4><a href="https://manojach87.shinyapps.io/SubscriberActivity" target="_projects">TBATS Time Series Forecasting</a></h4>
+              <h5>2019 - 2020</h5>
+              <p>R &bullet; TBATS &bullet; R-Shiny</p>
+              <p></p>
+              <p><em></em></p>
+            </div>
+            <div class="resume-item">
+              <h4>Twitter Sentiment analysis</h4>
+              <h5>2019 - 2020</h5>
+              <p>Python  &bullet; NLP</p>
+              <p></p>
+              <p><em></em></p>
+            </div>
+            <div class="resume-item">
+              <h4><a href="https://manojach87.github.io/nlp/" target="_projects">Similarities between articles</a></h4>
+              <h5>2018 - 2019</h5>
+              <p>Python &bullet; NLP &bullet; K-Means Clustering</p>
+              <p></p>
+              <p><em></em></p>
+            </div>
+            <div class="resume-item">
+              <h4><a href="https://public.tableau.com/profile/manoj.acharya3245#!/vizhome/EducationandRacialSegregationinNYC/RacialSegrationinSchools" target="_projects">Education and Racial Segregation in NYC</a></h4>
+              <h5>2018 - 2019</h5>
+              <p>Tableau &bullet; SQL</p>
+              <p></p>
+              <p><em></em></p>
+            </div>
+            <div class="resume-item">
+              <h4><a href="https://manojach87.github.io/ship" target="_projects">World-wide Shipping Data Visualization </a> </h4>
+              <h5>2018 - 2019</h5>
+              <p>Javascript &bullet; d3js</p>
+              <p></p>
+              <p><em></em></p>
             </div>
             <h3 class="resume-title">Certifications</h3>
             <div class="resume-item">
@@ -395,9 +435,9 @@
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
             <h3 class="resume-title">Professional Experience</h3>
             <div class="resume-item">
-              <h4>Data Quality Specialist</h4>
+              <h4>Charter Communications, Charlotte, NC</h4>
               <h5>Apr '20 - Present</h5>
-              <p><em>Charter Communications, Charlotte, NC </em></p>
+              <!--p><em>Charter Communications, Charlotte, NC </em></p-->
               <ul>
                 <li>Lead in the design, development, and implementation of data quality solutions using data science.</li>
                 <li>Design and implement advanced statistical methods such as TBATS and ARIMA in R to deal with time series data and to make seasonal forecasts.</li>
@@ -410,9 +450,9 @@
               </ul>
             </div>
             <div class="resume-item">
-              <h4>Ab Initio ETL Consultant | Data Science Intern</h4>
+              <h4>Zenosys LLC, Charlotte, NC</h4>
               <h5>Jun '18 - Apr '20</h5>
-              <p><em>Zenosys LLC, Charlotte, NC</em></p>
+              <!--p><em>Zenosys LLC, Charlotte, NC</em></p-->
               <ul>
                 <li>Analyze data with standard statistical methods, interpret the results, and provide written summary of data analyses</li>
                 <li>Implement advanced statistical methods for prediction and optimization including a wide variety of machine learning technologies (logit, regression, decision trees/forests, clustering, etc.) for purposes including explorative analysis, segmentation and time series prediction and analysis</li>
@@ -431,9 +471,9 @@
               </ul>
             </div>
             <div class="resume-item">
-              <h4>Technology Lead</h4>
+              <h4>Infosys Ltd, Charlotte, NC</h4>
               <h5>Mar '15 - Jun '18</h5>
-              <p><em>Infosys Ltd, Charlotte, NC</em></p>
+              <!--p><em>Infosys Ltd, Charlotte, NC</em></p-->
               <ul>
                 <li>Lead and mentor onshore team members and provide project related directions to offshore team</li>
                 <li>Present Demos about MetaData Hub and Metadata Management to Business users</li>
@@ -445,9 +485,9 @@
               </ul>
             </div>
             <div class="resume-item">
-              <h4>Senior Software Engineer</h4>
+              <h4>Syntel Ltd, Memphis, TN</h4>
               <h5>Nov '13 - Feb '15</h5>
-              <p><em>Syntel Ltd, Memphis, TN</em></p>
+              <!--p><em>Syntel Ltd, Memphis, TN</em></p-->
               <ul>
                 <li>Interact with the clients to gather business requirements</li>
                 <li>Develop and maintain wrapper scripts using Unix Korn Shell</li>
@@ -459,9 +499,9 @@
               </ul>
             </div>
             <div class="resume-item">
-              <h4>Senior Software Engineer</h4>
+              <h4>Syntel Ltd, Pune, India</h4>
               <h5>Oct '10 - Nov '13</h5>
-              <p><em>Syntel Ltd, Pune, India</em></p>
+              <!--p><em>Syntel Ltd, Pune, India</em></p-->
               <ul>
 				  
                 <li>Interact with the onsite team to understand the requirements</li>
