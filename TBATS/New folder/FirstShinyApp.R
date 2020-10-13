@@ -8,7 +8,7 @@ library("ggplot2")
 #runApp("stockVis")
 
 loadCounter = 0
-
+# Read the source file
 df <-read.csv("./data/minutes_per_view_stb.csv")
 df$brdcstwkenddtsk<-as.Date(as.character(df$brdcstwkenddtsk), "%Y%m%d")
 x=unique(df$mso)
